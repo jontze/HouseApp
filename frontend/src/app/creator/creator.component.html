@@ -1,0 +1,133 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Strom">
+        <mat-vertical-stepper linear="isLinear" #stepperPower>
+            <!-- Datum -->
+            <mat-step>
+                <ng-template matStepLabel>Datum</ng-template>
+                <form [formGroup]="powerForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="pickerPower" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-datepicker #pickerPower></mat-datepicker>
+                      </mat-form-field>
+                      <button mat-raised-button (click)="pickerPower.open()">Open</button>
+                      <div>
+                          <button mat-button matStepperNext>Weiter</button>
+                      </div>
+                </form>
+            </mat-step>
+            <!-- KWh -->
+            <mat-step>
+                <ng-template matStepLabel>Kilowattstunden</ng-template>
+                <form [formGroup]="powerForm">
+                    <mat-form-field>
+                        <mat-label>Kilowattstunden (KWh)</mat-label>
+                        <input matInput formControlName="kwh" required>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form>               
+            </mat-step>
+            <!-- Save -->
+            <mat-step>
+                <ng-template matStepLabel>Speichern</ng-template>
+                <form [formGroup]="powerForm" (ngSubmit)="submitPower()">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!powerForm.valid">Speichern</button>
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-tab>
+
+
+    <mat-tab label="Wasser" #stepperWater>
+        <mat-vertical-stepper linear="isLinear">
+            <!-- Datum -->
+            <mat-step>
+                <ng-template matStepLabel>Datum</ng-template>
+                <form [formGroup]="waterForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="pickerWater" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-datepicker #pickerWater></mat-datepicker>
+                      </mat-form-field>
+                      <button mat-raised-button (click)="pickerWater.open()">Open</button>
+                      <div>
+                          <button mat-button matStepperNext>Weiter</button>
+                      </div>
+                </form>
+            </mat-step>
+            <!-- Kubikmeter -->
+            <mat-step>
+                <ng-template matStepLabel>Kubikmeter</ng-template>
+                <form [formGroup]="waterForm">
+                    <input matInput formControlName="m3" placeholder="8080m³" required>
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form>
+            </mat-step>
+            <!-- Save -->
+            <mat-step>
+                <ng-template matStepLabel>Speichern</ng-template>
+                <form [formGroup]="waterForm" (ngSubmit)="submitWater()">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!waterForm.valid">Speichern</button>
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-tab>
+
+
+    <mat-tab label="Öl">
+        <mat-vertical-stepper linear="isLinear" #stepperOil>
+            <!-- Datum -->
+            <mat-step>
+                <ng-template matStepLabel>Datum</ng-template>
+                <form [formGroup]="oilForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="pickerOil" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-datepicker #pickerOil></mat-datepicker>
+                      </mat-form-field>
+                      <button mat-raised-button (click)="pickerOil.open()">Open</button>
+                      <div>
+                          <button mat-button matStepperNext>Weiter</button>
+                      </div>
+                </form>
+            </mat-step>
+            <!-- Filled -->
+            <mat-step>
+                <ng-template matStepLabel>Füllstand</ng-template>
+                <form [formGroup]="oilForm">
+                    <input matInput formControlName="filled" placeholder="150" required>
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form> 
+            </mat-step>
+            <!-- Save -->
+            <mat-step>
+                <ng-template matStepLabel>Speichern</ng-template>
+                <form [formGroup]="oilForm" (ngSubmit)="submitOil()">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!oilForm.valid">Speichern</button>
+                    <div>
+                        <button mat-button matStepperPrevious>Zurück</button>
+                        <button mat-button matStepperNext>Weiter</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-tab>
+</mat-tab-group>
