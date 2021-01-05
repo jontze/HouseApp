@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button>
+      <mat-icon (click)="toggleSidenav.emit()">menu</mat-icon>
+    </button>
+    <h1>Hausverbrauch</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/'">Übersicht</a>
+      <a mat-button [routerLink]="'/daten'">Daten</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
