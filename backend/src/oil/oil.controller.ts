@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { OilService } from './oil.service';
 
 @Controller('oil')
@@ -17,7 +18,7 @@ export class OilController {
   }
 
   @Post()
-  async createOil() {
-    // save params in Oil-Table
+  async createOil(@Body() oil: Prisma.OilCreateInput) {
+    return await this.oilService.createOil(oil);
   }
 }
