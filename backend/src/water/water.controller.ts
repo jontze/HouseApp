@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { WaterService } from './water.service';
 
 @Controller('water')
@@ -17,7 +18,7 @@ export class WaterController {
   }
 
   @Post()
-  async createWater() {
-    // save water to taböle
+  async createWater(@Body() water: Prisma.WaterCreateInput) {
+    return await this.waterService.createWater(water);
   }
 }
