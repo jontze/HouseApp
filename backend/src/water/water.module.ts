@@ -4,6 +4,6 @@ import { WaterController } from './water.controller';
 
 @Module({
   providers: [WaterService],
-  controllers: [WaterController]
+  controllers: [WaterController],
 })
 export class WaterModule {}

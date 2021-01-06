@@ -4,6 +4,6 @@ import { OilController } from './oil.controller';
 
 @Module({
   providers: [OilService],
-  controllers: [OilController]
+  controllers: [OilController],
 })
 export class OilModule {}
