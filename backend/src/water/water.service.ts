@@ -47,7 +47,9 @@ export class WaterService {
   }
 
   async createWater(data: Prisma.WaterCreateInput): Promise<Water> {
-    const newWater = await this.createWater(data);
+    const newWater = await this.prisma.water.create({
+      data,
+    });
     if (!newWater) {
       throw new HttpException('Water foundation failed.', HttpStatus.FORBIDDEN);
     } else {
