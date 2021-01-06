@@ -47,7 +47,9 @@ export class PowerService {
   }
 
   async createPower(data: Prisma.PowerCreateInput): Promise<Power> {
-    const newPower = await this.createPower(data);
+    const newPower = await this.prisma.power.create({
+      data,
+    });
     if (!newPower) {
       throw new HttpException('Power foundation failed.', HttpStatus.FORBIDDEN);
     } else {
