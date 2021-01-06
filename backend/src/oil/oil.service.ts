@@ -47,7 +47,9 @@ export class OilService {
   }
 
   async createOil(data: Prisma.OilCreateInput): Promise<Oil> {
-    const newOil = await this.createOil(data);
+    const newOil = await this.prisma.oil.create({
+      data,
+    });
     if (!newOil) {
       throw new HttpException('Oil foundation failed.', HttpStatus.FORBIDDEN);
     } else {
