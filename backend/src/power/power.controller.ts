@@ -19,10 +19,6 @@ export class PowerController {
 
   @Post()
   async createPower(@Body() power: Prisma.PowerCreateInput) {
-    // TODO: validate
-    const validatedPower = power;
-    validatedPower.date = new Date();
-    validatedPower.kwh = 10000;
     return await this.powerService.createPower(power);
   }
 }
