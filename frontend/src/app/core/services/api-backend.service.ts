@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Oil, OilInput, Power, Water } from './classes/api-backend';
+import { Oil, OilInput, Power, PowerInput, Water, WaterInput } from './classes/api-backend';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +32,23 @@ export class ApiBackendService {
   }
 
   postOil(oil: OilInput): Observable<Oil> {
-    return this.http.post<Oil>('http://localhost:3000/api/oil', oil, {
+    return this.http.post<Oil>(`${this.baseURI}oil`, oil, {
       observe: 'body',
       responseType: 'json',
     });
   }
 
+  postWater(water: WaterInput): Observable<Water> {
+    return this.http.post<Water>(`${this.baseURI}water`, water, {
+      observe: 'body',
+      responseType: 'json'
+    });
+  }
+
+  postPower(power: PowerInput): Observable<Power> {
+    return this.http.post<Power>(`${this.baseURI}power`, power, {
+      observe: 'body',
+      responseType: 'json'
+    });
+  }
 }
