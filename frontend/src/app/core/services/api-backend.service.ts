@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Oil, OilInput, Power, Water } from './typings/api-backend';
+import { Oil, OilInput, Power, Water } from './classes/api-backend';
 
 @Injectable({
   providedIn: 'root'
