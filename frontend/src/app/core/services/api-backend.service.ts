@@ -31,8 +31,8 @@ export class ApiBackendService {
     });
   }
 
-  addOil(oil: OilInput): Observable<OilInput> {
-    return this.http.post<OilInput>('http://localhost:3000/api/oil', oil, {
+  postOil(oil: OilInput): Observable<Oil> {
+    return this.http.post<Oil>('http://localhost:3000/api/oil', oil, {
       observe: 'body',
       responseType: 'json',
     });
