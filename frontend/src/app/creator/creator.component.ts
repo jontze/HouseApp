@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ApiBackendService } from '../core/services/api-backend.service';
-import { Oil } from '../core/services/classes/api-backend';
+import { Oil, Power, Water } from '../core/services/classes/api-backend';
 
 @Component({
   selector: 'app-creator',
@@ -22,6 +22,8 @@ export class CreatorComponent implements OnInit {
     filled: ['', Validators.required],
   });
   private postedOil!: Oil;
+  private postedWater!: Water;
+  private postedPower!: Power;
 
   constructor(private readonly fb: FormBuilder, private readonly apiBackendService: ApiBackendService) { }
 
@@ -29,25 +31,25 @@ export class CreatorComponent implements OnInit {
   }
 
   submitPower(): void {
-    // send Power-Data to server
-    console.log(this.powerForm.value);
+    this.apiBackendService.postPower({
+      date: this.powerForm.value.date,
+      kwh: parseFloat(this.powerForm.value.kwh),
+    }).subscribe((res) => this.postedPower = res);
   }
 
   submitWater(): void {
-    // send Water to server
-    console.log(this.waterForm.value);
+    this.apiBackendService.postWater({
+      date: this.waterForm.value.date,
+      cubicmeter: parseFloat(this.waterForm.value.m3),
+    }).subscribe((res) => this.postedWater = res);
   }
 
   submitOil(): void {
-    // send Oil to Server
-    console.log(this.oilForm.value);
     this.apiBackendService.postOil({
       date: this.oilForm.value.date,
       filled: parseFloat(this.oilForm.value.filled)
     }).subscribe((res) => {
-      // TODO: Fix
       this.postedOil = res;
-      console.log(res);
     });
   }
 
