@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiBackendService } from '../core/services/api-backend.service';
+import { Oil, Power, Water } from '../core/services/typings/api-backend';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public allOil: Oil[] = [];
+  public allPower: Power[] = [];
+  public allWater: Water[] = [];
 
-  constructor() { }
+  constructor(private apiBackendService: ApiBackendService) { }
 
   ngOnInit(): void {
+    this.apiBackendService.getOil().subscribe((data) => this.allOil = data);
+    this.apiBackendService.getPower().subscribe((data) => this.allPower = data);
+    this.apiBackendService.getWater().subscribe((data) => this.allWater = data);
   }
-
 }
