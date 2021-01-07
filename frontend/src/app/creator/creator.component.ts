@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ApiBackendService } from '../core/services/api-backend.service';
+import { Oil } from '../core/services/typings/api-backend';
 
 @Component({
   selector: 'app-creator',
@@ -7,20 +9,21 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./creator.component.css'],
 })
 export class CreatorComponent implements OnInit {
-  powerForm = this.fb.group({
+  public powerForm = this.fb.group({
     date: ['', Validators.required],
     kwh: ['', Validators.required],
   });
-  waterForm = this.fb.group({
+  public waterForm = this.fb.group({
     date: ['', Validators.required],
     m3: ['', Validators.required],
   });
-   oilForm = this.fb.group({
+   public oilForm = this.fb.group({
     date: ['', Validators.required],
     filled: ['', Validators.required],
   });
+  private postedOil!: Oil;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private readonly fb: FormBuilder, private readonly apiBackendService: ApiBackendService) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +41,14 @@ export class CreatorComponent implements OnInit {
   submitOil(): void {
     // send Oil to Server
     console.log(this.oilForm.value);
+    this.apiBackendService.postOil({
+      date: this.oilForm.value.date,
+      filled: parseFloat(this.oilForm.value.filled)
+    }).subscribe((res) => {
+      // TODO: Fix
+      this.postedOil = res;
+      console.log(res);
+    });
   }
 
 }
