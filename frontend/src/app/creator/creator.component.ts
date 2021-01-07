@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ApiBackendService } from '../core/services/api-backend.service';
-import { Oil } from '../core/services/typings/api-backend';
+import { Oil } from '../core/services/classes/api-backend';
 
 @Component({
   selector: 'app-creator',

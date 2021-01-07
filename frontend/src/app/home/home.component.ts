@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiBackendService } from '../core/services/api-backend.service';
-import { Oil, Power, Water } from '../core/services/typings/api-backend';
+import { Oil, Power, Water } from '../core/services/classes/api-backend';
 
 @Component({
   selector: 'app-home',
