@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const components: any[] = [
   NavigationBarComponent,
@@ -18,7 +19,8 @@ const components: any[] = [
     AngularMaterialModule,
     BrowserAnimationsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
   ],
   exports: [ SkeletonComponent ]
 })
