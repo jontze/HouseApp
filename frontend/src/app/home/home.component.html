@@ -1,6 +1,6 @@
-<mat-grid-list cols="6">
+<mat-grid-list cols="6" rowHeight="550px">
     <mat-grid-tile colspan="4">
-        <mat-card>
+        <mat-card class="custom-card">
             <mat-card-title>Stromverbrauch</mat-card-title>
             <mat-card-content>
                 <app-chart chartId="powerChart" [data]="allPower" [settings]="powerChartSettings"></app-chart>
@@ -11,7 +11,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <mat-card>
+        <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Stromverbrauch</mat-card-title>
             <mat-card-content>
                 <p>Relativer Vergleich Vormonat</p>
@@ -22,7 +22,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="4">
-        <mat-card>
+        <mat-card class="custom-card">
             <mat-card-title>Wasserverbrauch</mat-card-title>
             <mat-card-content>
                 <app-chart chartId="waterChart" [data]="allWater" [settings]="waterChartSettings"></app-chart>
@@ -33,7 +33,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <mat-card>
+        <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Wasserverbrauch</mat-card-title>
             <mat-card-content>
                 <p>Relativer Vergleich Vormonat</p>
@@ -44,7 +44,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="4">
-        <mat-card>
+        <mat-card class="custom-card">
             <mat-card-title>Ölstand</mat-card-title>
             <mat-card-content>
                 <app-chart chartId="oilChart" [data]="allOil" [settings]="oilChartSettings"></app-chart>
@@ -55,7 +55,7 @@
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="2">
-        <mat-card>
+        <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Ölstand</mat-card-title>
             <mat-card-content>
                 <p>Relativer Vergleich Vormonat</p>
