@@ -35,3 +35,5 @@ lerna-debug.log*
 
 # Ignore Prisma DB
 dev.db
+generated/
+.env.production
