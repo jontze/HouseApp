@@ -6,11 +6,11 @@
                 <ng-template matStepLabel>Datum</ng-template>
                 <form [formGroup]="powerForm">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="pickerPower" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-label>Wähle ein Datum</mat-label>
+                        <input matInput [matDatepicker]="pickerPower" formControlName="date" required>
+                        <mat-datepicker-toggle matSuffix [for]="pickerPower"></mat-datepicker-toggle>
                         <mat-datepicker #pickerPower></mat-datepicker>
                       </mat-form-field>
-                      <button mat-raised-button (click)="pickerPower.open()">Open</button>
                       <div>
                           <button mat-button matStepperNext>Weiter</button>
                       </div>
@@ -53,11 +53,11 @@
                 <ng-template matStepLabel>Datum</ng-template>
                 <form [formGroup]="waterForm">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="pickerWater" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-label>Wähle ein Datum</mat-label>
+                        <input matInput [matDatepicker]="pickerWater" formControlName="date" required>
+                        <mat-datepicker-toggle matSuffix [for]="pickerWater"></mat-datepicker-toggle>
                         <mat-datepicker #pickerWater></mat-datepicker>
-                      </mat-form-field>
-                      <button mat-raised-button (click)="pickerWater.open()">Open</button>
+                    </mat-form-field>
                       <div>
                           <button mat-button matStepperNext>Weiter</button>
                       </div>
@@ -96,11 +96,11 @@
                 <ng-template matStepLabel>Datum</ng-template>
                 <form [formGroup]="oilForm">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="pickerOil" formControlName="date" placeholder="27/08/2020" required>
+                        <mat-label>Wähle ein Datum</mat-label>
+                        <input matInput [matDatepicker]="pickerOil" formControlName="date" required>
+                        <mat-datepicker-toggle matSuffix [for]="pickerOil"></mat-datepicker-toggle>
                         <mat-datepicker #pickerOil></mat-datepicker>
                       </mat-form-field>
-                      <button mat-raised-button (click)="pickerOil.open()">Open</button>
                       <div>
                           <button mat-button matStepperNext>Weiter</button>
                       </div>
