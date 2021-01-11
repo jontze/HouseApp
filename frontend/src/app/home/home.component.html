@@ -6,7 +6,7 @@
                 <app-chart chartId="powerChart" [data]="allPower" [settings]="powerChartSettings"></app-chart>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary"><mat-icon>refresh</mat-icon> Aktualisieren</button>
+                <button mat-raised-button color="primary" (click)="loadPower()"><mat-icon>refresh</mat-icon> Aktualisieren</button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
@@ -28,7 +28,7 @@
                 <app-chart chartId="waterChart" [data]="allWater" [settings]="waterChartSettings"></app-chart>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary"><mat-icon>refresh</mat-icon> Aktualisieren</button>
+                <button mat-raised-button color="primary" (click)="loadWater()"><mat-icon>refresh</mat-icon> Aktualisieren</button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
@@ -50,7 +50,7 @@
                 <app-chart chartId="oilChart" [data]="allOil" [settings]="oilChartSettings"></app-chart>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary"><mat-icon>refresh</mat-icon> Aktualisieren</button>
+                <button mat-raised-button color="primary" (click)="loadOil()"><mat-icon>refresh</mat-icon> Aktualisieren</button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>

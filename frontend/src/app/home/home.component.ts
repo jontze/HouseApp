@@ -37,8 +37,20 @@ export class HomeComponent implements OnInit {
   constructor(private apiBackendService: ApiBackendService) { }
 
   ngOnInit(): void {
+    this.loadOil();
+    this.loadPower();
+    this.loadWater();
+  }
+
+  public loadOil(): void {
     this.apiBackendService.getOil().subscribe((data) => this.allOil = data);
+  }
+
+  public loadPower(): void {
     this.apiBackendService.getPower().subscribe((data) => this.allPower = data);
+  }
+
+  public loadWater(): void {
     this.apiBackendService.getWater().subscribe((data) => this.allWater = data);
   }
 }
