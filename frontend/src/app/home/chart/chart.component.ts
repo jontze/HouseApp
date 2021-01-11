@@ -66,6 +66,7 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chart = am4core.create(this.chartId, am4charts.XYChart);
     this.chart.logo.disabled = true;
     this.chart.paddingRight = 20;
+    this.chart.numberFormatter.numberFormat = '#.#,#';
 
     // Create Data Export Option
     this.chart.exporting.menu = new am4core.ExportMenu();
@@ -82,6 +83,7 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private reloadChartData(data: any): void {
+    this.chart.series.clear();
     // Create Scrollbar
     const scrollbarX = new am4charts.XYChartScrollbar();
     this.chart.scrollbarX = scrollbarX;
