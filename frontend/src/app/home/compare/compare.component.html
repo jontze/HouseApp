@@ -1,0 +1,33 @@
+<mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile colspan="1" rowspan="1">
+                <button mat-raised-button color="accent">Vormonat ({{unit}})</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <span *ngIf="!isMissingMonthAbs" class="number">{{compareMonthAbs}} {{unit}}</span>
+                <span *ngIf="isMissingMonthAbs" class="miss-warn">{{missingMsg}}</span>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <button mat-raised-button color="accent">Vormonat (%)</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <span *ngIf="!isMissingMonthRel" class="number">{{compareMonthRel}} %</span>
+                <span *ngIf="isMissingMonthRel" class="miss-warn">{{missingMsg}}</span>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2" rowspan="1">
+                <mat-divider></mat-divider>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <button mat-raised-button color="warn">Vorjahr ({{unit}})</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <span *ngIf="!isMissingYearAbs" class="number">{{compareYearAbs}} {{unit}}</span>
+                <span *ngIf="isMissingYearAbs" class="miss-warn">{{missingMsg}}</span>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <button mat-raised-button color="warn">Vorjahr (%)</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+                <span *ngIf="!isMissingYearRel" class="number">{{compareYearRel}} %</span>
+                <span *ngIf="isMissingYearRel" class="miss-warn">{{missingMsg}}</span>
+        </mat-grid-tile>
+</mat-grid-list>
