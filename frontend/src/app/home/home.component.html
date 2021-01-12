@@ -14,10 +14,7 @@
         <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Stromverbrauch</mat-card-title>
             <mat-card-content>
-                <p>Relativer Vergleich Vormonat</p>
-                <p>Absoluter Vergleich Vormonat</p>
-                <p>Relativer Vergleich Vorjahr</p>
-                <p>Absoluter Vergleich Vorjahr</p>
+                <app-compare [data]="allPower" unit="KWh"></app-compare>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -36,10 +33,7 @@
         <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Wasserverbrauch</mat-card-title>
             <mat-card-content>
-                <p>Relativer Vergleich Vormonat</p>
-                <p>Absoluter Vergleich Vormonat</p>
-                <p>Relativer Vergleich Vorjahr</p>
-                <p>Absoluter Vergleich Vorjahr</p>
+                <app-compare [data]="allWater" unit="m³"></app-compare>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
@@ -58,10 +52,7 @@
         <mat-card class="custom-card compare">
             <mat-card-title>Vergleich Ölstand</mat-card-title>
             <mat-card-content>
-                <p>Relativer Vergleich Vormonat</p>
-                <p>Absoluter Vergleich Vormonat</p>
-                <p>Relativer Vergleich Vorjahr</p>
-                <p>Absoluter Vergleich Vorjahr</p>
+                <app-compare [data]="allOil" unit="gefüllt"></app-compare>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
