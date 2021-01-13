@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Oil } from 'src/entity/oil.entity';
+import { Oil } from '../entity/oil.entity';
 import { Repository } from 'typeorm';
 import { OilController } from './oil.controller';
 import { OilService } from './oil.service';

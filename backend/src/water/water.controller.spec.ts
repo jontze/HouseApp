@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Water } from 'src/entity/water.entity';
+import { Water } from '../entity/water.entity';
 import { Repository } from 'typeorm';
 import { WaterController } from './water.controller';
 import { WaterService } from './water.service';

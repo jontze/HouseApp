@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Power } from 'src/entity/power.entity';
+import { Power } from '../entity/power.entity';
 import { Repository } from 'typeorm';
 import { PowerController } from './power.controller';
 import { PowerService } from './power.service';

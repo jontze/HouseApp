@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Power } from 'src/entity/power.entity';
+import { Power } from '../entity/power.entity';
 import { Repository } from 'typeorm';
 import { PowerService } from './power.service';
 

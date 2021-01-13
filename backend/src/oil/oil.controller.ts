@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Oil } from 'src/entity/oil.entity';
+import { Oil } from '../entity/oil.entity';
 import { OilService } from './oil.service';
 
 @Controller('oil')

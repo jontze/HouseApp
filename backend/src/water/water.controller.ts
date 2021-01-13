@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Water } from 'src/entity/water.entity';
+import { Water } from '../entity/water.entity';
 import { WaterService } from './water.service';
 
 @Controller('water')

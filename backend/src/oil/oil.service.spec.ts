@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Oil } from 'src/entity/oil.entity';
+import { Oil } from '../entity/oil.entity';
 import { Repository } from 'typeorm';
 import { OilService } from './oil.service';
 

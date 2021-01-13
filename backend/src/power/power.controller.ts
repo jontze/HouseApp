@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Power } from 'src/entity/power.entity';
+import { Power } from '../entity/power.entity';
 import { PowerService } from './power.service';
 
 @Controller('power')
