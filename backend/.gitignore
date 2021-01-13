@@ -33,7 +33,6 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Ignore Prisma DB
-dev.db
-generated/
+# Ignore Custom stuff
 .env.production
+ormconfig.env
