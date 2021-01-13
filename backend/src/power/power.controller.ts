@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Prisma } from 'prisma/generated/client';
+import { Power } from 'src/entity/power.entity';
 import { PowerService } from './power.service';
 
 @Controller('power')
@@ -8,17 +8,11 @@ export class PowerController {
 
   @Get()
   async allPower() {
-    return await this.powerService.powers({
-      where: {
-        id: {
-          gt: 0,
-        },
-      },
-    });
+    return await this.powerService.powers();
   }
 
   @Post()
-  async createPower(@Body() power: Prisma.PowerCreateInput) {
-    return await this.powerService.createPower(power);
+  async create(@Body() power: Power) {
+    return await this.powerService.create(power);
   }
 }
