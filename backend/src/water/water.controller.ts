@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Prisma } from 'prisma/generated/client';
+import { Water } from 'src/entity/water.entity';
 import { WaterService } from './water.service';
 
 @Controller('water')
@@ -8,17 +8,11 @@ export class WaterController {
 
   @Get()
   async allWater() {
-    return this.waterService.waters({
-      where: {
-        id: {
-          gt: 0,
-        },
-      },
-    });
+    return this.waterService.waters();
   }
 
   @Post()
-  async createWater(@Body() water: Prisma.WaterCreateInput) {
-    return await this.waterService.createWater(water);
+  async createWater(@Body() water: Water) {
+    return await this.waterService.create(water);
   }
 }

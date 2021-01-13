@@ -1,59 +1,27 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Power, Prisma } from 'prisma/generated/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Power } from 'src/entity/power.entity';
+import { DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class PowerService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    @InjectRepository(Power) private readonly powerRepo: Repository<Power>,
+  ) {}
 
-  async power(
-    powerWhereUniqueInput: Prisma.PowerWhereUniqueInput,
-  ): Promise<Power | null> {
-    return this.prisma.power.findUnique({
-      where: powerWhereUniqueInput,
-    });
+  power(id: string): Promise<Power> {
+    return this.powerRepo.findOne(id);
   }
 
-  async powers(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.PowerWhereUniqueInput;
-    where: Prisma.PowerWhereInput;
-    orderBy?: Prisma.PowerOrderByInput;
-  }): Promise<Power[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.power.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-    });
+  powers(): Promise<Power[]> {
+    return this.powerRepo.find();
   }
 
-  async countPower(params: Prisma.FindManyPowerArgs): Promise<number> {
-    return await this.prisma.power.count(params);
+  remove(id: string): Promise<DeleteResult> {
+    return this.powerRepo.delete(id);
   }
 
-  async updatePower(params: {
-    where: Prisma.PowerWhereUniqueInput;
-    data: Prisma.PowerUpdateInput;
-  }): Promise<Power> {
-    const { where, data } = params;
-    return this.prisma.power.update({
-      data,
-      where,
-    });
-  }
-
-  async createPower(data: Prisma.PowerCreateInput): Promise<Power> {
-    const newPower = await this.prisma.power.create({
-      data,
-    });
-    if (!newPower) {
-      throw new HttpException('Power foundation failed.', HttpStatus.FORBIDDEN);
-    } else {
-      return newPower;
-    }
+  async create(power: Power): Promise<Power> {
+    return this.powerRepo.save(power);
   }
 }
