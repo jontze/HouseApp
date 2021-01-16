@@ -15,10 +15,10 @@ import { CreatorModule } from './creator/creator.module';
   imports: [
     BrowserModule,
     CoreModule,
-    HomeModule,
-    CreatorModule,
     AppRoutingModule,
     LayoutModule,
+    HomeModule,
+    CreatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
