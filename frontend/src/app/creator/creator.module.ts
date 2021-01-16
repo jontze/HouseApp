@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { CreatorRoutingModule } from './creator-routing.module';
 import { CreatorComponent } from './creator.component';
 
@@ -10,7 +10,7 @@ import { CreatorComponent } from './creator.component';
 @NgModule({
   declarations: [CreatorComponent],
   imports: [
-    AngularMaterialModule,
+    SharedModule,
     CreatorRoutingModule,
     ReactiveFormsModule,
     FormsModule,
