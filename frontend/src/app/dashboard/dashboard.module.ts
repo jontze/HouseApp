@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
@@ -14,6 +15,7 @@ import { CompareComponent } from './compare/compare.component';
   imports: [
     SharedModule,
     DashboardRoutingModule,
+    AlertModule.forRoot(),
   ]
 })
 export class DashboardModule { }
