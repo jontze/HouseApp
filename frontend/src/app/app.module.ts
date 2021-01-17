@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomeModule } from './home/home.module';
 import { CreatorModule } from './creator/creator.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreatorModule } from './creator/creator.module';
     LayoutModule,
     HomeModule,
     CreatorModule,
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
