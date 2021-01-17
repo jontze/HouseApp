@@ -1,28 +1,21 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-    <h1>Hausverbrauch</h1>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="'/'">Übersicht</a>
-      <a mat-button [routerLink]="'/daten'">Daten</a>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+  <span class="navbar-brand mb-0 h1">
+    HouseApp
+  </span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="#navbar" aria-expanded="false" aria-label="Toggle Navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="'/'"> Übersicht </a>
-      <a mat-list-item [routerLink]="'/daten'"> Daten </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div style="height: 88vh;">
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="'/'">Dashboard</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="'/daten'">Daten anlegen</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<router-outlet></router-outlet>
