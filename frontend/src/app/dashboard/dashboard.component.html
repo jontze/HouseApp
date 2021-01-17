@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <app-card title="Stromverbrauch">
+        <app-chart chartId="powerChart" [data]="allPower" [settings]="powerChartSettings"></app-chart>
+      </app-card>
+    </div>
+    <div class="col-sm-4">
+      <app-card title="Vergleich Stromverbrauch">
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <app-card title="Wasserverbrauch">
+        <app-chart chartId="waterChart" [data]="allWater" [settings]="waterChartSettings"></app-chart>
+      </app-card>
+    </div>
+    <div class="col-sm-4">
+      <app-card title="Vergleich Wasserverbrauch">
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <app-card title="Ölstand">
+        <app-chart chartId="oilChart" [data]="allOil" [settings]="oilChartSettings"></app-chart>
+      </app-card>
+    </div>
+    <div class="col-sm-4">
+      <app-card title="Vergleich Ölstand">
+      </app-card>
+    </div>
+  </div>
+</div>
