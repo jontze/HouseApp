@@ -7,6 +7,7 @@
     "build": "ng build --prod --build-optimizer=false",
     "test": "ng test",
     "lint": "prettier --check src/app",
+    "lint:fix": "prettier --write src/app",
     "e2e": "ng e2e"
   },
   "private": true,
