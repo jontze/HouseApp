@@ -1,7 +1,11 @@
 <footer>
-    <mat-toolbar color="primary" class="md-scroll-shrink">
-        <div layout="row" layout-align="center center" flex>
-            FOOTER
-        </div>
-    </mat-toolbar>
+  <nav class="navbar navbar-fixed-bottom navbar-dark bg-primary">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [href]="ghRepoURI" target="_blank"
+          ><fa-icon [icon]="['fab', 'github']" size="2x"></fa-icon
+        ></a>
+      </li>
+    </ul>
+  </nav>
 </footer>
