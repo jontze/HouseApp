@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-compare',
   templateUrl: './compare.component.html',
-  styleUrls: ['./compare.component.css']
+  styleUrls: ['./compare.component.css'],
 })
 export class CompareComponent implements OnInit {
   // TODO: implement calculating logic for historic data;
@@ -20,9 +20,7 @@ export class CompareComponent implements OnInit {
   public compareYearRel!: number;
   public isMissingYearRel = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

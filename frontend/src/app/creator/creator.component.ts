@@ -18,7 +18,7 @@ export class CreatorComponent implements OnInit {
     date: ['', Validators.required],
     m3: ['', Validators.required],
   });
-   public oilForm = this.fb.group({
+  public oilForm = this.fb.group({
     date: ['', Validators.required],
     filled: ['', Validators.required],
   });
@@ -32,39 +32,56 @@ export class CreatorComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly apiBackendService: ApiBackendService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public submitPower(): void {
-    this.apiBackendService.postPower({
-      date: this.powerForm.value.date,
-      kwh: parseFloat(this.powerForm.value.kwh),
-    }).subscribe((res) => {
-      this.postedPower = res;
-      this.showSnack('Stromzähler-Stand gespeichert!', this.snackAction, this.snackDuration);
-    });
+    this.apiBackendService
+      .postPower({
+        date: this.powerForm.value.date,
+        kwh: parseFloat(this.powerForm.value.kwh),
+      })
+      .subscribe((res) => {
+        this.postedPower = res;
+        this.showSnack(
+          'Stromzähler-Stand gespeichert!',
+          this.snackAction,
+          this.snackDuration
+        );
+      });
   }
 
   public submitWater(): void {
-    this.apiBackendService.postWater({
-      date: this.waterForm.value.date,
-      cubicmeter: parseFloat(this.waterForm.value.m3),
-    }).subscribe((res) => {
-      this.postedWater = res;
-      this.showSnack('Wasserzähler-Stand gespeichert!', this.snackAction, this.snackDuration);
-    });
+    this.apiBackendService
+      .postWater({
+        date: this.waterForm.value.date,
+        cubicmeter: parseFloat(this.waterForm.value.m3),
+      })
+      .subscribe((res) => {
+        this.postedWater = res;
+        this.showSnack(
+          'Wasserzähler-Stand gespeichert!',
+          this.snackAction,
+          this.snackDuration
+        );
+      });
   }
 
   public submitOil(): void {
-    this.apiBackendService.postOil({
-      date: this.oilForm.value.date,
-      filled: parseFloat(this.oilForm.value.filled)
-    }).subscribe((res) => {
-      this.postedOil = res;
-      this.showSnack('Ölstand gespeichert!', this.snackAction, this.snackDuration);
-    });
+    this.apiBackendService
+      .postOil({
+        date: this.oilForm.value.date,
+        filled: parseFloat(this.oilForm.value.filled),
+      })
+      .subscribe((res) => {
+        this.postedOil = res;
+        this.showSnack(
+          'Ölstand gespeichert!',
+          this.snackAction,
+          this.snackDuration
+        );
+      });
   }
 
   public showSnack(message: string, action: string, showTime: number): void {
@@ -72,5 +89,4 @@ export class CreatorComponent implements OnInit {
       duration: showTime,
     });
   }
-
 }

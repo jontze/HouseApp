@@ -1,35 +1,34 @@
-
 interface Base {
-    id: number;
-    date: Date;
-    createdAt: Date;
-    updatedAt: Date;
+  id: number;
+  date: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Oil extends Base {
-    filled: number;
+  filled: number;
 }
 
 export interface Water extends Base {
-    cubicmeter: number;
+  cubicmeter: number;
 }
 
 export interface Power extends Base {
-    kwh: number;
+  kwh: number;
 }
 
 interface BaseInput {
-    date: Date;
+  date: Date;
 }
 
 export interface OilInput extends BaseInput {
-    filled: number;
+  filled: number;
 }
 
 export interface WaterInput extends BaseInput {
-    cubicmeter: number;
+  cubicmeter: number;
 }
 
 export interface PowerInput extends BaseInput {
-    kwh: number;
+  kwh: number;
 }

@@ -7,7 +7,7 @@ import { ChartSettingsI } from './chart/classes/chart';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   public allOil!: Oil[];
@@ -18,24 +18,24 @@ export class DashboardComponent implements OnInit {
       dateFieldName: 'date',
       valueFieldName: 'filled',
       label: 'Ölstand',
-    }
+    },
   ];
   public readonly powerChartSettings: ChartSettingsI[] = [
     {
       dateFieldName: 'date',
       valueFieldName: 'kwh',
-      label: 'Stromverbrauch (KWh)'
-    }
+      label: 'Stromverbrauch (KWh)',
+    },
   ];
   public readonly waterChartSettings: ChartSettingsI[] = [
     {
       dateFieldName: 'date',
       valueFieldName: 'cubicmeter',
-      label: 'Wasserverbrauch (m³)'
-    }
+      label: 'Wasserverbrauch (m³)',
+    },
   ];
 
-  constructor(private readonly apiBackendService: ApiBackendService) { }
+  constructor(private readonly apiBackendService: ApiBackendService) {}
 
   ngOnInit(): void {
     this.loadOil();
@@ -44,14 +44,18 @@ export class DashboardComponent implements OnInit {
   }
 
   public loadOil(): void {
-    this.apiBackendService.getOil().subscribe((data) => this.allOil = data);
+    this.apiBackendService.getOil().subscribe((data) => (this.allOil = data));
   }
 
   public loadPower(): void {
-    this.apiBackendService.getPower().subscribe((data) => this.allPower = data);
+    this.apiBackendService
+      .getPower()
+      .subscribe((data) => (this.allPower = data));
   }
 
   public loadWater(): void {
-    this.apiBackendService.getWater().subscribe((data) => this.allWater = data);
+    this.apiBackendService
+      .getWater()
+      .subscribe((data) => (this.allWater = data));
   }
 }

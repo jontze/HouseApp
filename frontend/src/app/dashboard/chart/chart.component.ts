@@ -1,4 +1,13 @@
-import { Component, OnInit, Inject, NgZone, PLATFORM_ID, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Inject,
+  NgZone,
+  PLATFORM_ID,
+  AfterViewInit,
+  OnDestroy,
+  Input,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 // amCharts imports
@@ -7,11 +16,10 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { ChartSettingsI } from './classes/chart';
 
-
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public chartId!: string;
@@ -20,7 +28,10 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private chart!: am4charts.XYChart;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any, private zone: NgZone) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private zone: NgZone
+  ) {}
 
   @Input() set data(chartData: any) {
     this.chartData = chartData;
@@ -33,8 +44,7 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.chartData;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   // Run the function only in the browser
   browserOnly(f: () => void): void {
@@ -90,7 +100,7 @@ export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
     // Give Data to Chart
     this.chart.data = this.data;
     // Create Series based on given settings
-    this.settings.forEach(setting => {
+    this.settings.forEach((setting) => {
       const serie = this.chart.series.push(new am4charts.LineSeries());
       serie.dataFields.dateX = setting.dateFieldName;
       serie.dataFields.valueY = setting.valueFieldName;

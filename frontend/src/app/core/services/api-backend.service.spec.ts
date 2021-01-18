@@ -10,15 +10,10 @@ describe('ApiBackendService', () => {
   let mockHttpClient: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    mockHttpClient = jasmine.createSpyObj('HttpClient', [
-      'get',
-      'post'
-    ]);
+    mockHttpClient = jasmine.createSpyObj('HttpClient', ['get', 'post']);
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule
-      ],
+      imports: [HttpClientModule],
       providers: [
         ApiBackendService,
         {
@@ -29,7 +24,7 @@ describe('ApiBackendService', () => {
     });
 
     service = TestBed.inject(ApiBackendService);
-  })
+  });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -37,7 +32,7 @@ describe('ApiBackendService', () => {
 
   it('should create httpClient', () => {
     expect(mockHttpClient).toBeTruthy();
-  })
+  });
 
   it('should return Oil-Array', fakeAsync(() => {
     const expectedOil: Oil[] = [
@@ -47,20 +42,20 @@ describe('ApiBackendService', () => {
         date: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+      },
     ];
-    mockHttpClient.get.and.returnValue(of(expectedOil))
-    
+    mockHttpClient.get.and.returnValue(of(expectedOil));
+
     let receivedOil: Oil[] = [];
     service.getOil().subscribe((oil) => {
       receivedOil = oil;
-    })
+    });
 
     flush();
 
     expect(receivedOil).toBe(expectedOil);
     expect(mockHttpClient.get).toHaveBeenCalled();
-  }))
+  }));
 
   it('should return Power-Array', fakeAsync(() => {
     const expectedPower: Power[] = [
@@ -70,11 +65,11 @@ describe('ApiBackendService', () => {
         date: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+      },
     ];
     mockHttpClient.get.and.returnValue(of(expectedPower));
 
-    let receivedPower: Power[] = []
+    let receivedPower: Power[] = [];
     service.getPower().subscribe((power) => {
       receivedPower = power;
     });
@@ -83,7 +78,7 @@ describe('ApiBackendService', () => {
 
     expect(receivedPower).toBe(expectedPower);
     expect(mockHttpClient.get).toHaveBeenCalled();
-  }))
+  }));
 
   it('should return Water-Array', fakeAsync(() => {
     const expectedWater: Water[] = [
@@ -93,11 +88,11 @@ describe('ApiBackendService', () => {
         date: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+      },
     ];
     mockHttpClient.get.and.returnValue(of(expectedWater));
 
-    let receivedWater: Water[] = []
+    let receivedWater: Water[] = [];
     service.getWater().subscribe((water) => {
       receivedWater = water;
     });
@@ -106,7 +101,7 @@ describe('ApiBackendService', () => {
 
     expect(receivedWater).toBe(expectedWater);
     expect(mockHttpClient.get).toHaveBeenCalled();
-  }))
+  }));
 
   it('should submit Oil', fakeAsync(() => {
     const submittedOil: Oil = {
@@ -116,18 +111,18 @@ describe('ApiBackendService', () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    mockHttpClient.post.and.returnValue(of(submittedOil))
+    mockHttpClient.post.and.returnValue(of(submittedOil));
 
     let receivedOil!: Oil;
     service.postOil(submittedOil).subscribe((oil) => {
       receivedOil = oil;
-    })
+    });
 
     flush();
 
     expect(receivedOil).toBe(submittedOil);
     expect(mockHttpClient.post).toHaveBeenCalled();
-  }))
+  }));
 
   it('should submit Power', fakeAsync(() => {
     const submittedPower: Power = {
@@ -137,18 +132,18 @@ describe('ApiBackendService', () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    mockHttpClient.post.and.returnValue(of(submittedPower))
+    mockHttpClient.post.and.returnValue(of(submittedPower));
 
     let receivedPower!: Power;
     service.postPower(submittedPower).subscribe((power) => {
       receivedPower = power;
     });
-    
+
     flush();
 
     expect(receivedPower).toBe(submittedPower);
     expect(mockHttpClient.post).toHaveBeenCalled();
-  }))
+  }));
 
   it('should submit Water', fakeAsync(() => {
     const submittedWater: Water = {
@@ -170,5 +165,5 @@ describe('ApiBackendService', () => {
 
     expect(receivedWater).toBe(submittedWater);
     expect(mockHttpClient.post).toHaveBeenCalled();
-  }))
+  }));
 });

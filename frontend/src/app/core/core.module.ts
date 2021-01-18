@@ -8,13 +8,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HttpClientModule } from '@angular/common/http';
 
-const components: any[] = [
-  NavigationBarComponent,
-  SkeletonComponent
-];
+const components: any[] = [NavigationBarComponent, SkeletonComponent];
 
 @NgModule({
-  declarations: [ NavigationBarComponent, FooterComponent, SkeletonComponent ],
+  declarations: [NavigationBarComponent, FooterComponent, SkeletonComponent],
   imports: [
     AngularMaterialModule,
     BrowserAnimationsModule,
@@ -22,6 +19,6 @@ const components: any[] = [
     RouterModule,
     HttpClientModule,
   ],
-  exports: [ SkeletonComponent ]
+  exports: [SkeletonComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

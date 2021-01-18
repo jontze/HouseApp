@@ -9,9 +9,7 @@ import { CreatorModule } from './creator/creator.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CoreModule,
@@ -21,6 +19,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     DashboardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

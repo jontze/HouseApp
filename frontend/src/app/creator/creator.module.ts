@@ -5,8 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CreatorRoutingModule } from './creator-routing.module';
 import { CreatorComponent } from './creator.component';
 
-
-
 @NgModule({
   declarations: [CreatorComponent],
   imports: [
@@ -15,6 +13,6 @@ import { CreatorComponent } from './creator.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [ CreatorComponent ]
+  providers: [CreatorComponent],
 })
-export class CreatorModule { }
+export class CreatorModule {}

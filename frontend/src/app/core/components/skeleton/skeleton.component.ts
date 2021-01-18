@@ -3,13 +3,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-skeleton',
   templateUrl: './skeleton.component.html',
-  styleUrls: ['./skeleton.component.css']
+  styleUrls: ['./skeleton.component.css'],
 })
 export class SkeletonComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

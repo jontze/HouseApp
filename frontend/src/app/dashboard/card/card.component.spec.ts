@@ -10,9 +10,8 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
-    })
-    .compileComponents();
+      declarations: [CardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -29,7 +28,7 @@ describe('CardComponent', () => {
     component.title = testTitle;
     expect(component.title).toBeDefined();
     expect(component.title).toEqual(testTitle);
-  })
+  });
 
   it(`should render card with title "${testTitle}"`, () => {
     const cardDe: DebugElement = fixture.debugElement;
@@ -37,6 +36,8 @@ describe('CardComponent', () => {
     expect(cardNa).toBeDefined();
     fixture.componentInstance.title = testTitle;
     fixture.detectChanges();
-    expect(cardNa.querySelector('.card-title')?.textContent).toContain(testTitle);
-  })
+    expect(cardNa.querySelector('.card-title')?.textContent).toContain(
+      testTitle
+    );
+  });
 });
