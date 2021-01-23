@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
@@ -14,7 +13,6 @@ const components: any[] = [NavigationBarComponent, SkeletonComponent];
 @NgModule({
   declarations: [NavigationBarComponent, FooterComponent, SkeletonComponent],
   imports: [
-    AngularMaterialModule,
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
