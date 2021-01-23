@@ -1,3 +1,4 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IResults } from './results';
 
@@ -12,7 +13,7 @@ describe('ResultsComponent', () => {
     createdAt: new Date(),
     updatedAt: new Date(),
     kwh: 123,
-  }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,6 +33,18 @@ describe('ResultsComponent', () => {
 
   it('should set resultData property', () => {
     fixture.componentInstance.resultData = testData;
+    fixture.detectChanges();
     expect(fixture.componentInstance.resultData).toEqual(testData);
+    fixture.componentInstance.resultData = undefined
+    fixture.detectChanges();
+  });
+
+  it('should render card if data is set', () => {
+    const resultsDebug: DebugElement = fixture.debugElement;
+    const resultsNative: HTMLElement = resultsDebug.nativeElement;
+    expect(resultsNative.querySelector('div.card')).toBeNull();
+    fixture.componentInstance.resultData = testData;
+    fixture.detectChanges();
+    expect(resultsNative.querySelector('div.card')).toBeDefined()
   })
 });
