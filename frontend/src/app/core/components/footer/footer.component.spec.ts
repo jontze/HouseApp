@@ -30,7 +30,7 @@ describe('FooterComponent', () => {
     expect(component.ghRepoURI).toBeDefined();
     component.ghRepoURI = testURI;
     expect(component.ghRepoURI).toBe(testURI);
-  })
+  });
 
   it('should contain ghIcon', () => {
     const footerDebug: DebugElement = fixture.debugElement;
@@ -44,6 +44,8 @@ describe('FooterComponent', () => {
     const testURI = 'test';
     fixture.componentInstance.ghRepoURI = testURI;
     fixture.detectChanges();
-    expect(footerNative.querySelector('a.nav-link')?.getAttribute('href')).toBe(testURI);
-  })
+    expect(footerNative.querySelector('a.nav-link')?.getAttribute('href')).toBe(
+      testURI
+    );
+  });
 });
