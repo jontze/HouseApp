@@ -1,176 +1,154 @@
-<mat-tab-group mat-align-tabs="start">
-  <mat-tab label="Strom">
-    <mat-vertical-stepper linear="isLinear" #stepperPower>
-      <!-- Datum -->
-      <mat-step>
-        <ng-template matStepLabel>Datum</ng-template>
-        <form [formGroup]="powerForm">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Wähle ein Datum</mat-label>
-            <input
-              matInput
-              [matDatepicker]="pickerPower"
-              formControlName="date"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="pickerPower"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #pickerPower></mat-datepicker>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Weiter</button>
+<div>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type"><span [innerHTML]="alert.msg"></span></alert>
+  </div>
+  <tabset [justified]="true">
+    <tab heading="Strom">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Stromzähler eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="powerForm" (ngSubmit)="submitPower()">
+                <div class="form-group">
+                  <label for="kwhInput">Stromwerte in KWh</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="kwhInput"
+                    placeholder="Gebe Stromwert ein"
+                    formControlName="kwh"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputPower">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputPower"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!powerForm.valid"
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
           </div>
-        </form>
-      </mat-step>
-      <!-- KWh -->
-      <mat-step>
-        <ng-template matStepLabel>Kilowattstunden</ng-template>
-        <form [formGroup]="powerForm">
-          <mat-form-field>
-            <mat-label>Kilowattstunden (KWh)</mat-label>
-            <input matInput formControlName="kwh" required />
-          </mat-form-field>
-
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedPower"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Wasser">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Wasserverbrauch eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="waterForm" (ngSubmit)="submitWater()">
+                <div class="form-group">
+                  <label for="waterInput">Wasserwerte in m³</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="waterInput"
+                    placeholder="Gebe Wasserwerte ein"
+                    formControlName="m3"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputWater">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputWater"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!waterForm.valid"
+                  (onclick)="(submitWater)"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
           </div>
-        </form>
-      </mat-step>
-      <!-- Save -->
-      <mat-step>
-        <ng-template matStepLabel>Speichern</ng-template>
-        <form [formGroup]="powerForm" (ngSubmit)="submitPower()">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="!powerForm.valid"
-          >
-            Speichern
-          </button>
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedWater"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Öl">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Füllstand Öltank eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="oilForm" (ngSubmit)="submitOil()">
+                <div class="form-group">
+                  <label for="oilInput">Ölstand Tank</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="oilInput"
+                    placeholder="Gebe Ölstand ein"
+                    formControlName="filled"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputOil">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputOil"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!oilForm.valid"
+                  (onclick)="(submitOil)"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
           </div>
-        </form>
-      </mat-step>
-    </mat-vertical-stepper>
-  </mat-tab>
-
-  <mat-tab label="Wasser" #stepperWater>
-    <mat-vertical-stepper linear="isLinear">
-      <!-- Datum -->
-      <mat-step>
-        <ng-template matStepLabel>Datum</ng-template>
-        <form [formGroup]="waterForm">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Wähle ein Datum</mat-label>
-            <input
-              matInput
-              [matDatepicker]="pickerWater"
-              formControlName="date"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="pickerWater"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #pickerWater></mat-datepicker>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-      <!-- Kubikmeter -->
-      <mat-step>
-        <ng-template matStepLabel>Kubikmeter</ng-template>
-        <form [formGroup]="waterForm">
-          <input matInput formControlName="m3" placeholder="8080m³" required />
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-      <!-- Save -->
-      <mat-step>
-        <ng-template matStepLabel>Speichern</ng-template>
-        <form [formGroup]="waterForm" (ngSubmit)="submitWater()">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="!waterForm.valid"
-          >
-            Speichern
-          </button>
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-    </mat-vertical-stepper>
-  </mat-tab>
-
-  <mat-tab label="Öl">
-    <mat-vertical-stepper linear="isLinear" #stepperOil>
-      <!-- Datum -->
-      <mat-step>
-        <ng-template matStepLabel>Datum</ng-template>
-        <form [formGroup]="oilForm">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Wähle ein Datum</mat-label>
-            <input
-              matInput
-              [matDatepicker]="pickerOil"
-              formControlName="date"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="pickerOil"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #pickerOil></mat-datepicker>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-      <!-- Filled -->
-      <mat-step>
-        <ng-template matStepLabel>Füllstand</ng-template>
-        <form [formGroup]="oilForm">
-          <input matInput formControlName="filled" placeholder="150" required />
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-      <!-- Save -->
-      <mat-step>
-        <ng-template matStepLabel>Speichern</ng-template>
-        <form [formGroup]="oilForm" (ngSubmit)="submitOil()">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="!oilForm.valid"
-          >
-            Speichern
-          </button>
-          <div>
-            <button mat-button matStepperPrevious>Zurück</button>
-            <button mat-button matStepperNext>Weiter</button>
-          </div>
-        </form>
-      </mat-step>
-    </mat-vertical-stepper>
-  </mat-tab>
-</mat-tab-group>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedOil"></app-results>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>

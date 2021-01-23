@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { deLocale } from 'ngx-bootstrap/locale';
+import { v4 as uuid } from 'uuid';
+import { IAlert, AlertType } from './creator';
 import { ApiBackendService } from '../core/services/api-backend.service';
 import { Oil, Power, Water } from '../core/services/classes/api-backend';
 
@@ -22,17 +27,21 @@ export class CreatorComponent implements OnInit {
     date: ['', Validators.required],
     filled: ['', Validators.required],
   });
-  private postedOil!: Oil;
-  private postedWater!: Water;
-  private postedPower!: Power;
-  private readonly snackDuration: number = 7000;
-  private readonly snackAction: string = 'Ok';
+  public alerts: IAlert[] = [];
+  public postedOil!: Oil;
+  public postedWater!: Water;
+  public postedPower!: Power;
+  private readonly showDuration: number = 5000;
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly apiBackendService: ApiBackendService,
-    private snackBar: MatSnackBar
-  ) {}
+    private readonly bsLocalService: BsLocaleService,
+    private readonly sanitizer: DomSanitizer
+  ) {
+    defineLocale('de', deLocale);
+    this.bsLocalService.use('de');
+  }
 
   ngOnInit(): void {}
 
@@ -42,14 +51,21 @@ export class CreatorComponent implements OnInit {
         date: this.powerForm.value.date,
         kwh: parseFloat(this.powerForm.value.kwh),
       })
-      .subscribe((res) => {
-        this.postedPower = res;
-        this.showSnack(
-          'Stromzähler-Stand gespeichert!',
-          this.snackAction,
-          this.snackDuration
-        );
-      });
+      .subscribe(
+        (res) => {
+          this.postedPower = res;
+        },
+        (err) => {
+          console.error(err);
+          this.addAlert(
+            '<strong>Fehler!</strong> Stromzählerstand konnte <strong>nicht übermittel</strong> werden...',
+            'danger'
+          );
+        },
+        () => {
+          this.addAlert('Stromzählerstand erfolgreich übermittelt!', 'success');
+        }
+      );
   }
 
   public submitWater(): void {
@@ -58,14 +74,21 @@ export class CreatorComponent implements OnInit {
         date: this.waterForm.value.date,
         cubicmeter: parseFloat(this.waterForm.value.m3),
       })
-      .subscribe((res) => {
-        this.postedWater = res;
-        this.showSnack(
-          'Wasserzähler-Stand gespeichert!',
-          this.snackAction,
-          this.snackDuration
-        );
-      });
+      .subscribe(
+        (res) => {
+          this.postedWater = res;
+        },
+        (err) => {
+          console.error(err);
+          this.addAlert(
+            '<strong>Fehler!</strong> Wassterstand konnte <strong>nicht übermittel</strong> werden...',
+            'danger'
+          );
+        },
+        () => {
+          this.addAlert('Wasserstand erfolgreich übermittelt!', 'success');
+        }
+      );
   }
 
   public submitOil(): void {
@@ -74,19 +97,41 @@ export class CreatorComponent implements OnInit {
         date: this.oilForm.value.date,
         filled: parseFloat(this.oilForm.value.filled),
       })
-      .subscribe((res) => {
-        this.postedOil = res;
-        this.showSnack(
-          'Ölstand gespeichert!',
-          this.snackAction,
-          this.snackDuration
-        );
-      });
+      .subscribe(
+        (res) => {
+          this.postedOil = res;
+        },
+        (err) => {
+          console.error(err);
+          this.addAlert(
+            '<strong>Fehler!</strong> Ölstand konnte <strong>nicht übermittel</strong> werden...',
+            'danger'
+          );
+        },
+        () => {
+          this.addAlert('Ölstand erfolgreich übermittelt!', 'success');
+        }
+      );
   }
 
-  public showSnack(message: string, action: string, showTime: number): void {
-    this.snackBar.open(message, action, {
-      duration: showTime,
+  public addAlert(
+    message: string,
+    type: AlertType,
+    showTime: number = this.showDuration
+  ): void {
+    const id: string = uuid();
+    this.alerts.push({
+      uuid: id,
+      type: type,
+      msg: this.sanitizer.sanitize(SecurityContext.HTML, message) ?? '',
     });
+    setTimeout(() => {
+      this.removeAlert(id);
+    }, showTime);
+  }
+
+  private removeAlert(id: string) {
+    const index = this.alerts.findIndex((alert) => alert.uuid === id);
+    this.alerts.splice(index);
   }
 }
