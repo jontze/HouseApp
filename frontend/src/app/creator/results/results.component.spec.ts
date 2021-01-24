@@ -35,7 +35,7 @@ describe('ResultsComponent', () => {
     fixture.componentInstance.resultData = testData;
     fixture.detectChanges();
     expect(fixture.componentInstance.resultData).toEqual(testData);
-    fixture.componentInstance.resultData = undefined
+    fixture.componentInstance.resultData = undefined;
     fixture.detectChanges();
   });
 
@@ -45,6 +45,6 @@ describe('ResultsComponent', () => {
     expect(resultsNative.querySelector('div.card')).toBeNull();
     fixture.componentInstance.resultData = testData;
     fixture.detectChanges();
-    expect(resultsNative.querySelector('div.card')).toBeDefined()
-  })
+    expect(resultsNative.querySelector('div.card')).toBeDefined();
+  });
 });
