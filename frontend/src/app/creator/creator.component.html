@@ -1,0 +1,154 @@
+<div>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type"><span [innerHTML]="alert.msg"></span></alert>
+  </div>
+  <tabset [justified]="true">
+    <tab heading="Strom">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Stromzähler eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="powerForm" (ngSubmit)="submitPower()">
+                <div class="form-group">
+                  <label for="kwhInput">Stromwerte in KWh</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="kwhInput"
+                    placeholder="Gebe Stromwert ein"
+                    formControlName="kwh"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputPower">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputPower"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!powerForm.valid"
+                  type="submit"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedPower"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Wasser">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Wasserverbrauch eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="waterForm" (ngSubmit)="submitWater()">
+                <div class="form-group">
+                  <label for="waterInput">Wasserwerte in m³</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="waterInput"
+                    placeholder="Gebe Wasserwerte ein"
+                    formControlName="m3"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputWater">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputWater"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!waterForm.valid"
+                  (onclick)="(submitWater)"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedWater"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Öl">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <div class="card">
+            <div class="card-header">Füllstand Öltank eintragen</div>
+            <div class="card-body">
+              <form [formGroup]="oilForm" (ngSubmit)="submitOil()">
+                <div class="form-group">
+                  <label for="oilInput">Ölstand Tank</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="oilInput"
+                    placeholder="Gebe Ölstand ein"
+                    formControlName="filled"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="dateInputOil">Ablesedatum</label>
+                  <input
+                    type="string"
+                    class="form-control"
+                    id="dateInputOil"
+                    placeholder="Gebe Datum ein"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                    formControlName="date"
+                    required
+                    bsDatepicker
+                  />
+                </div>
+                <button
+                  [disabled]="!oilForm.valid"
+                  (onclick)="(submitOil)"
+                  class="btn btn-primary"
+                >
+                  Speichern
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-results [resultData]="postedOil"></app-results>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>
