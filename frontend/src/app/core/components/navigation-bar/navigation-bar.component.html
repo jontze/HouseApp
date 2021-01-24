@@ -3,16 +3,12 @@
   <button
     class="navbar-toggler"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbar"
-    aria-controls="#navbar"
-    aria-expanded="false"
-    aria-label="Toggle Navigation"
+    (click)="toggle()"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbar">
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="'/'">Dashboard</a>
