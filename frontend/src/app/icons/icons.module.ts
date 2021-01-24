@@ -5,7 +5,7 @@ import {
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faDatabase, faHouseUser, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [],
@@ -14,6 +14,6 @@ import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 })
 export class IconsModule {
   constructor(private readonly library: FaIconLibrary) {
-    library.addIcons(faGithub, faChartLine);
+    library.addIcons(faGithub, faChartLine, faHouseUser, faTachometerAlt, faDatabase);
   }
 }

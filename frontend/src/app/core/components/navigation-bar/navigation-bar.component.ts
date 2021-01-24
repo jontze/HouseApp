@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,13 +6,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./navigation-bar.component.css'],
 })
 export class NavigationBarComponent implements OnInit {
-  @Output() toggleSidenav = new EventEmitter<void>();
+  public navbarOpen = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  toggle(): void {
-    this.toggle();
+  public toggle(): void {
+    this.navbarOpen = !this.navbarOpen;
   }
 }
