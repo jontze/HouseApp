@@ -21,4 +21,9 @@ describe('NavigationBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle navbar', () => {
+    component.toggle();
+    expect(component.navbarOpen).toBe(true);
+  });
 });
