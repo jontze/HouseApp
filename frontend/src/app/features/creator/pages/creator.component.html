@@ -1,0 +1,61 @@
+<div>
+  <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type"><span [innerHTML]="alert.msg"></span></alert>
+  </div>
+  <tabset [justified]="true">
+    <tab heading="Strom">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-form
+            header="Stromzähler eintragen"
+            valueLabel="Stromwerte in KWh"
+            valuePlaceholder="Gebe Stromwert ein"
+            dateLabel="Ablesedatum"
+            (submitFormEvent)="submitPower($event)"
+          ></app-form>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9" *ngIf="postedPower">
+          <app-results [resultData]="postedPower" type="POWER"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Wasser">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-form
+            header="Wasserverbrauch eintragen"
+            valueLabel="Wasserwerte in m³"
+            valuePlaceholder="Gebe Wasserwerte ein"
+            dateLabel="Ablesedatum"
+            (submitFormEvent)="submitWater($event)"
+          ></app-form>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9" *ngIf="postedWater">
+          <app-results [resultData]="postedWater" type="WATER"></app-results>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Öl">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <app-form
+            header="Füllstand Öltank eintragen"
+            valueLabel="Ölstand Tank"
+            valuePlaceholder="Gebe Ölstand ein"
+            dateLabel="Ablesedatum"
+            (submitFormEvent)="submitOil($event)"
+          ></app-form>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-9" *ngIf="postedOil">
+          <app-results [resultData]="postedOil" type="OIL"></app-results>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>
