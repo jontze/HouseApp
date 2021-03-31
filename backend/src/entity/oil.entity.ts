@@ -14,7 +14,7 @@ export class Oil {
   @Column()
   date: Date;
 
-  @Column()
+  @Column('decimal')
   filled: number;
 
   @CreateDateColumn()

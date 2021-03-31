@@ -14,7 +14,7 @@ export class Power {
   @Column()
   date: Date;
 
-  @Column()
+  @Column('decimal')
   kwh: number;
 
   @CreateDateColumn()

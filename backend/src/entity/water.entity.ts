@@ -14,7 +14,7 @@ export class Water {
   @Column()
   date: Date;
 
-  @Column()
+  @Column('decimal')
   cubicmeter: number;
 
   @CreateDateColumn()
