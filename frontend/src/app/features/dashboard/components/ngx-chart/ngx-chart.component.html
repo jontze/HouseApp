@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <ngx-charts-line-chart
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXLabel"
+    [showYAxisLabel]="showYLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xLabel"
+    [yAxisLabel]="yLabel"
+    [timeline]="timeline"
+    [results]="data"
+    [xAxisTickFormatting]="this.dateFormatting"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+  >
+    <ng-template #tooltipTemplate let-model="model">
+      <p>
+        {{ model.name | date: "mediumDate":"GMT+2":"de" }}
+      </p>
+      <h4>
+        {{ model.value }} <strong>{{ model.series }}</strong>
+      </h4>
+    </ng-template>
+  </ngx-charts-line-chart>
+</div>
