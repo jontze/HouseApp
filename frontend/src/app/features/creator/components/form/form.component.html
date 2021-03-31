@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header">{{ header }}</div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="valueInput">{{ valueLabel }}</label>
+        <input
+          type="number"
+          class="form-control"
+          [placeholder]="valuePlaceholder"
+          formControlName="value"
+          id="valueInput"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="dateInput">{{ dateLabel }}</label>
+        <input
+          type="string"
+          class="form-control"
+          id="dateInput"
+          placeholder="Gebe Datum ein"
+          [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+          formControlName="date"
+          required
+          bsDatepicker
+        />
+      </div>
+      <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+        Speichern
+      </button>
+    </form>
+  </div>
+</div>

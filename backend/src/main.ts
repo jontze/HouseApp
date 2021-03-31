@@ -4,30 +4,34 @@ import * as helmet from 'helmet';
 import * as rateLimit from 'express-rate-limit';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  // Set up Helmet
+
+  app.setGlobalPrefix('/api');
   app.use(helmet());
-  // Set up rate limiting
-  app.set('trust proxy', 1);
+  // Auto-Validation Pipe
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.enableCors({
+    origin: '*',
+  });
+  app.set('trust proxy', 1); // ?
   app.use(
     rateLimit({
       windowMs: 1 * 60 * 1000, // 1 Minute
-      max: 110, // limit each IP to 100 requests per windowMs
+      max: 60, // limit each IP to 60 requests per windowMs
     }),
   );
-  // Setup Swagger OpenAPI
+
   const options = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('HouseApp')
+    .setDescription('The API description of the HouseApp')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
-  const document = SwaggerModule.createDocument(app, options, {
-    ignoreGlobalPrefix: true,
-  });
-  SwaggerModule.setup('/api', app, document);
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(3000);
 }
 bootstrap();

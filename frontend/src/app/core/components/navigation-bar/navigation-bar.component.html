@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+  <span class="navbar-brand mb-0 h1"
+    ><fa-icon [icon]="['fas', 'house-user']"></fa-icon> HouseApp
+  </span>
+  <button class="navbar-toggler" type="button" (click)="toggle()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ show: navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="'/'"
+          ><fa-icon [icon]="['fas', 'tachometer-alt']"></fa-icon> Dashboard</a
+        >
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="'/daten'"
+          ><fa-icon [icon]="['fas', 'database']"></fa-icon> Daten anlegen</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

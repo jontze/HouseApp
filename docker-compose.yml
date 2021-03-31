@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    env_file: ./backend/.env.production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+  postgres:
+    image: postgres:13-alpine
+    env_file: .env
+    ports:
+      - "8000:5432"
+    volumes:
+      - pgproddata:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  pgproddata:

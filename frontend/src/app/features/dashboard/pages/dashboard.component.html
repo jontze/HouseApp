@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-8">
+      <app-card title="Stromverbrauch">
+        <div class="chart-wrapper">
+          <app-ngx-chart
+            xLabel="Datum"
+            yLabel="Strom in (KWh)"
+            [data]="allPower"
+            [legend]="false"
+            [colorSeries]="['#ffa500']"
+            [timeline]="true"
+          ></app-ngx-chart>
+        </div>
+      </app-card>
+    </div>
+    <div class="col-xl-4">
+      <app-card title="Vergleich Stromverbrauch">
+        <app-compare [data]="allPower" unit="KWh"></app-compare>
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-8">
+      <app-card title="Wasserverbrauch">
+        <div class="chart-wrapper">
+          <app-ngx-chart
+            xLabel="Datum"
+            yLabel="Wasserverbrauch (m³)"
+            [data]="allWater"
+            [legend]="false"
+            [colorSeries]="['#0000ff']"
+            [timeline]="true"
+          ></app-ngx-chart>
+        </div>
+      </app-card>
+    </div>
+    <div class="col-xl-4">
+      <app-card title="Vergleich Wasserverbrauch">
+        <app-compare [data]="allWater" unit="m³"></app-compare>
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-8">
+      <app-card title="Ölstand">
+        <div class="chart-wrapper">
+          <app-ngx-chart
+            xLabel="Datum"
+            yLabel="Ölstand"
+            [data]="allOil"
+            [legend]="false"
+            [colorSeries]="['#000000']"
+            [timeline]="true"
+          ></app-ngx-chart>
+        </div>
+      </app-card>
+    </div>
+    <div class="col-xl-4">
+      <app-card title="Vergleich Ölstand">
+        <app-compare [data]="allOil" unit="gefüllt"></app-compare>
+      </app-card>
+    </div>
+  </div>
+</div>
