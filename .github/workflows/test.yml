@@ -7,14 +7,15 @@ on:
 jobs:
   frontend_lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to frontend
-        run: cd ./frontend
       - name: Install dependencies
         run: npm ci
       - name: Run linter
@@ -22,14 +23,15 @@ jobs:
   frontend_test:
     needs: frontend_lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to frontend
-        run: cd ./frontend
       - name: Install dependencies
         run: npm ci
       - name: Run tests
@@ -37,14 +39,15 @@ jobs:
   frontend_build:
     needs: frontend_test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to frontend
-        run: cd ./frontend
       - name: Install dependencies
         run: npm ci
       - name: Run build
@@ -52,14 +55,15 @@ jobs:
 
   backend_lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to backend
-        run: cd ./backend
       - name: Install dependencies
         run: npm ci
       - name: Run linter
@@ -67,14 +71,15 @@ jobs:
   backend_test:
     needs: backend_lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to backend
-        run: cd ./backend
       - name: Install dependencies
         run: npm ci
       - name: Run tests
@@ -82,14 +87,15 @@ jobs:
   backend_build:
     needs: backend_test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Change directory to backend
-        run: cd ./backend
       - name: Install dependencies
         run: npm ci
       - name: Run build
