@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreatorComponent } from './creator.component';
+import { CreatorComponent } from './pages/creator.component';
 
 const routes: Routes = [
   {
-    path: 'daten',
+    path: '',
     component: CreatorComponent,
   },
 ];

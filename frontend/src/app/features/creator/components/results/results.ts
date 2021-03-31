@@ -1,6 +1,6 @@
 export interface IResults {
   id: number;
-  date: Date;
+  date: string;
   kwh?: number;
   cubicmeter?: number;
   filled?: number;

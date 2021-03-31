@@ -39,7 +39,7 @@ describe('ApiBackendService', () => {
       {
         id: 1,
         filled: 120,
-        date: new Date(),
+        date: new Date().toISOString(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -62,7 +62,7 @@ describe('ApiBackendService', () => {
       {
         id: 1,
         kwh: 120,
-        date: new Date(),
+        date: new Date().toISOString(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -85,7 +85,7 @@ describe('ApiBackendService', () => {
       {
         id: 1,
         cubicmeter: 120,
-        date: new Date(),
+        date: new Date().toISOString(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -107,7 +107,7 @@ describe('ApiBackendService', () => {
     const submittedOil: Oil = {
       id: 1,
       filled: 120,
-      date: new Date(),
+      date: new Date().toISOString(),
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -128,7 +128,7 @@ describe('ApiBackendService', () => {
     const submittedPower: Power = {
       id: 1,
       kwh: 120,
-      date: new Date(),
+      date: new Date().toISOString(),
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -149,7 +149,7 @@ describe('ApiBackendService', () => {
     const submittedWater: Water = {
       id: 1,
       cubicmeter: 120,
-      date: new Date(),
+      date: new Date().toISOString(),
       createdAt: new Date(),
       updatedAt: new Date(),
     };

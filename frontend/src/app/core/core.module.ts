@@ -6,7 +6,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { FooterComponent } from './components/footer/footer.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HttpClientModule } from '@angular/common/http';
-import { IconsModule } from '../icons/icons.module';
+import { SharedModule } from '../shared/shared.module';
 
 const components: any[] = [NavigationBarComponent, SkeletonComponent];
 
@@ -17,7 +17,7 @@ const components: any[] = [NavigationBarComponent, SkeletonComponent];
     CommonModule,
     RouterModule,
     HttpClientModule,
-    IconsModule,
+    SharedModule,
   ],
   exports: [SkeletonComponent],
 })

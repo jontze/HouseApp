@@ -1,6 +1,6 @@
 interface Base {
   id: number;
-  date: Date;
+  date: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -18,7 +18,7 @@ export interface Power extends Base {
 }
 
 interface BaseInput {
-  date: Date;
+  date: string;
 }
 
 export interface OilInput extends BaseInput {
