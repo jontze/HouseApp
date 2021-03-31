@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from '@angular/cdk/layout';
-import { CreatorModule } from './creator/creator.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { CreatorModule } from './features/creator/creator.module';
+import { DashboardModule } from './features/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [AppComponent],
