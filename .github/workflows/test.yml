@@ -23,6 +23,8 @@ jobs:
   frontend_test:
     needs: frontend_lint
     runs-on: ubuntu-latest
+    container:
+      image: trion/ng-cli-karma
     defaults:
       run:
         working-directory: ./frontend
@@ -35,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: npm test
+        run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadless
   frontend_build:
     needs: frontend_test
     runs-on: ubuntu-latest
