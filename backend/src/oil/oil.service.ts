@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Oil } from '../entity/oil.entity';
-import { DeleteResult, Repository } from 'typeorm';
+import { DeepPartial, DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class OilService {
@@ -21,7 +21,7 @@ export class OilService {
     return this.oilRepo.delete(id);
   }
 
-  async create(oil: Oil): Promise<Oil> {
+  async create(oil: DeepPartial<Oil>): Promise<Oil> {
     return this.oilRepo.save(oil);
   }
 }

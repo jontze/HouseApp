@@ -8,36 +8,30 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
   app.setGlobalPrefix('/api');
+  app.use(helmet());
+  // Auto-Validation Pipe
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors({
     origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
   });
-  // Set up Helmet
-  app.use(helmet());
-  // Set up rate limiting
-  app.set('trust proxy', 1);
+  app.set('trust proxy', 1); // ?
   app.use(
     rateLimit({
       windowMs: 1 * 60 * 1000, // 1 Minute
-      max: 110, // limit each IP to 100 requests per windowMs
+      max: 60, // limit each IP to 60 requests per windowMs
     }),
   );
-  // Setup Swagger OpenAPI
+
   const options = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('HouseApp')
+    .setDescription('The API description of the HouseApp')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
-  const document = SwaggerModule.createDocument(app, options, {
-    ignoreGlobalPrefix: true,
-  });
-  SwaggerModule.setup('/api', app, document);
-  // Auto-Validation Pipe
-  app.useGlobalPipes(new ValidationPipe());
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(3000);
 }
 bootstrap();
