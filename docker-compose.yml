@@ -8,8 +8,8 @@ services:
       - backend
     restart: unless-stopped
   backend:
-    build: ./backend
-    env_file: ./backend/.env.production
+    build: ./rust-backend
+    env_file: ./rust-backend/.env.production
     ports:
       - "3000:3000"
     depends_on:
@@ -19,7 +19,7 @@ services:
     image: postgres:13-alpine
     env_file: .env
     ports:
-      - "8000:5432"
+      - "5432:5432"
     volumes:
       - pgproddata:/var/lib/postgresql/data
     restart: unless-stopped

@@ -12,8 +12,8 @@ updates:
     labels:
       - "dependencies"
       - "frontend"
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/backend" # Location of package manifests
+  - package-ecosystem: "cargo" # See documentation for possible values
+    directory: "/rust-backend" # Location of package manifests
     schedule:
       interval: "daily"
     labels:
