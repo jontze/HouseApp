@@ -2,9 +2,9 @@ FROM node:14.15-alpine as build
 WORKDIR /usr/frontend
 COPY package*.json ./
 COPY tsconfig.json .
-RUN npm install
+RUN yarn
 COPY . .
-RUN npm run build
+RUN yarn build
 
 FROM nginx:1.17.1-alpine as production
 WORKDIR /usr/frontend
