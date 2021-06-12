@@ -16,9 +16,9 @@ import { environment } from '../../../environments/environment';
 })
 export class ApiBackendService {
   private readonly baseURI = `${environment.backendURI}api/`;
-  private readonly oilURI = `${this.baseURI}oil`;
-  private readonly powerURI = `${this.baseURI}power`;
-  private readonly waterURI = `${this.baseURI}water`;
+  private readonly oilURI = `${this.baseURI}oil/`;
+  private readonly powerURI = `${this.baseURI}power/`;
+  private readonly waterURI = `${this.baseURI}water/`;
   constructor(private readonly http: HttpClient) {}
 
   getOil(): Observable<Oil[]> {
