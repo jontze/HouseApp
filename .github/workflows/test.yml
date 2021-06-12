@@ -1,7 +1,8 @@
 name: Test
 on:
   push:
-    branches: [develop, master]
+    branches:
+      - master
   pull_request:
     branches: [develop, master]
 jobs:
@@ -55,50 +56,75 @@ jobs:
       - name: Run build
         run: npm run build
 
-  backend_lint:
+  rust_backend_check:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
         with:
-          node-version: 14.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run linter
-        run: npm run lint
-  backend_test:
-    needs: backend_lint
+          toolchain: stable
+          profile: minimal
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: check
+          args: --manifest-path rust-backend/Cargo.toml
+  rust_backend_clippy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
         with:
-          node-version: 14.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
-  backend_build:
-    needs: backend_test
+          toolchain: stable
+          profile: minimal
+          override: true
+          components: clippy
+      - uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path rust-backend/Cargo.toml -- -D warnings
+  rust_backend_fmt:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
         with:
-          node-version: 14.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run build
-        run: npm run build
+          toolchain: stable
+          profile: minimal
+          override: true
+          components: rustfmt
+      - uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all --manifest-path rust-backend/Cargo.toml -- --check
+  rust_backend_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --manifest-path rust-backend/Cargo.toml
+  rust_backend_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --manifest-path rust-backend/Cargo.toml
