@@ -5,7 +5,7 @@ use diesel::r2d2::{self, ConnectionManager};
 pub type DbPool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
 pub fn parse_date_string(date_string: &str) -> Result<NaiveDateTime, ParseError> {
-    Ok(DateTime::parse_from_rfc3339(&date_string)?.naive_utc())
+    Ok(DateTime::parse_from_rfc3339(date_string)?.naive_utc())
 }
 
 #[cfg(test)]
