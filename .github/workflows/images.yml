@@ -22,11 +22,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./frontend
-          tags: ghcr.io/usingpython/housefrontend:${{ steps.latesttag.outputs.tag }}, ghcr.io/usingpython/housefrontend:latest
+          tags: ghcr.io/jontze/housefrontend:${{ steps.latesttag.outputs.tag }}, ghcr.io/jontze/housefrontend:latest
           push: true
       - name: Build and Push to backend image
         uses: docker/build-push-action@v2
         with:
           context: ./rust-backend
-          tags: ghcr.io/usingpython/housebackend:${{ steps.latesttag.outputs.tag }}, ghcr.io/usingpython/housebackend:latest
+          tags: ghcr.io/jontze/housebackend:${{ steps.latesttag.outputs.tag }}, ghcr.io/jontze/housebackend:latest
           push: true
