@@ -1,6 +1,0 @@
-.vscode/
-migrations/
-target/
-.env/
-.env.example/
-.gitignore/
