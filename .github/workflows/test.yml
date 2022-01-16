@@ -71,24 +71,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./frontend
-          tags: ghcr.io/usingpython/housefrontend:develop
+          tags: ghcr.io/jontze/housefrontend:develop
           push: true
-
-  rust_backend_check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --manifest-path rust-backend/Cargo.toml
-  rust_backend_clippy:
+  backend_clippy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -102,8 +87,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path rust-backend/Cargo.toml -- -D warnings
-  rust_backend_fmt:
+          args: --manifest-path backend/Cargo.toml -- -D warnings
+  backend_fmt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -117,8 +102,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --all --manifest-path rust-backend/Cargo.toml -- --check
-  rust_backend_test:
+          args: --all --manifest-path backend/Cargo.toml -- --check
+  backend_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -131,8 +116,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --manifest-path rust-backend/Cargo.toml
-  rust_backend_build:
+          args: --manifest-path backend/Cargo.toml
+  backend_build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -145,8 +130,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --manifest-path rust-backend/Cargo.toml
-  rust_backend_image:
+          args: --manifest-path backend/Cargo.toml
+  backend_image:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
@@ -161,6 +146,6 @@ jobs:
       - name: Build and Push to backend image
         uses: docker/build-push-action@v2
         with:
-          context: ./rust-backend
-          tags: ghcr.io/usingpython/housebackend:develop
+          context: ./backend
+          tags: ghcr.io/jontze/housebackend:develop
           push: true
