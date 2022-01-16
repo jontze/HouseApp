@@ -1,0 +1,432 @@
+{
+  "db": "PostgreSQL",
+  "11cc13e71031de00b69b9bb0122c5820a89292f92a1b8d3c82ebc15cd96aad6e": {
+    "query": "INSERT INTO water (date, cubicmeter) VALUES ($1, $2) RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "cubicmeter",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Timestamp",
+          "Float4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "31e6bc4e381ca876289acfde27215382918c95f59b1fcb22cbba41cae3f23e7d": {
+    "query": "SELECT * FROM water",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "cubicmeter",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": []
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "3a723383baaadd2bb80586dc3db2645b26995f786f7c163cf880cb2057c6473f": {
+    "query": "DELETE FROM water WHERE id = $1",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "59138cf311ea326c208d355b17179a84d4d3fcc2a7f1ae0b9b9085fb1192d727": {
+    "query": "SELECT * FROM oil",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "filled",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": []
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "6e7c3bbf056be601c58515e48d775232809660687216843d6b1793eda2e4068c": {
+    "query": "DELETE FROM oil WHERE id = $1",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "a7e7b9adebe5f4c00c62f9293be203ff92cd69becace797549eb53f0c192c5ed": {
+    "query": "DELETE FROM power WHERE id = $1",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "aed7eb8211749e25ffe177255c982ffad9522250297737a92e77f43e3f184b84": {
+    "query": "SELECT * FROM oil WHERE id = $1",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "filled",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "ca89a4130aa7d90564f0c5a17ca14a938cc0700316256e90d9449b2c64c35ced": {
+    "query": "SELECT * FROM power",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "kwh",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": []
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "d68bb1464bd0f4a678832b4565222eb20941d193172b9e48b615070749411a87": {
+    "query": "SELECT * FROM power WHERE id = $1",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "kwh",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "d6f216f534b7a415837908f4a6d14f028a18567d5c09521b9d60d01a429a3b6f": {
+    "query": "INSERT INTO power (date, kwh) VALUES ($1, $2) RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "kwh",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Timestamp",
+          "Float4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "de20b1259922e9001fa768e8b79242611d1c4ba4a19f9a6ea7e8155336c5a94f": {
+    "query": "INSERT INTO oil (date, filled) VALUES ($1, $2) RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "filled",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Timestamp",
+          "Float4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "f2126d43d35c5812522618cfcbcd93e628d6f33cac980b72ce4edf6b8bb1a7cc": {
+    "query": "SELECT * FROM water WHERE id = $1",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "cubicmeter",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  }
+}
