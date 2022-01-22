@@ -12,7 +12,7 @@ mod models;
 mod settings;
 mod utils;
 
-use handlers::{register_oil, register_power, register_water};
+use handlers::{register_oil, register_power, register_water, register_avg};
 use rocket::{fairing::AdHoc, figment::providers, Config, Rocket};
 use settings::headers::{Cors, SecureShield, Shield};
 use settings::Settings;
@@ -34,6 +34,7 @@ async fn main() {
         .mount("/api/oil/", register_oil())
         .mount("/api/power/", register_power())
         .mount("/api/water/", register_water())
+        .mount("/api/avg", register_avg())
         .launch()
         .await
         .expect("Server should start");
