@@ -13,7 +13,12 @@ import { AlertBoxComponent } from './components/alert-box/alert-box.component';
 const components: any[] = [NavigationBarComponent, SkeletonComponent];
 
 @NgModule({
-  declarations: [NavigationBarComponent, FooterComponent, SkeletonComponent, AlertBoxComponent],
+  declarations: [
+    NavigationBarComponent,
+    FooterComponent,
+    SkeletonComponent,
+    AlertBoxComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
