@@ -76,6 +76,8 @@ jobs:
           push: true
   backend_clippy:
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Setup Rust
@@ -91,6 +93,8 @@ jobs:
           args: --manifest-path backend/Cargo.toml -- -D warnings
   backend_fmt:
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Setup Rust
@@ -106,6 +110,8 @@ jobs:
           args: --all --manifest-path backend/Cargo.toml -- --check
   backend_test:
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Setup Rust
@@ -120,6 +126,8 @@ jobs:
           args: --manifest-path backend/Cargo.toml
   backend_build:
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - uses: actions/checkout@v2
       - name: Setup Rust
@@ -140,6 +148,8 @@ jobs:
       - backend_fmt
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
