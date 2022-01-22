@@ -1,15 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IAlert } from '../../services/classes/alert';
 
 @Component({
   selector: 'app-alert-box',
   templateUrl: './alert-box.component.html',
-  styleUrls: ['./alert-box.component.css'],
 })
-export class AlertBoxComponent implements OnInit {
+export class AlertBoxComponent {
   @Input() alerts: IAlert[] = [];
-
-  ngOnInit(): void {}
 
   public identifyById(index: number, item: IAlert): string {
     return item.uuid;

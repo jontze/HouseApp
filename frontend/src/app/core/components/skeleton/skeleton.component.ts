@@ -7,7 +7,6 @@ import { IAlert } from '../../services/classes/alert';
 @Component({
   selector: 'app-skeleton',
   templateUrl: './skeleton.component.html',
-  styleUrls: ['./skeleton.component.css'],
 })
 export class SkeletonComponent implements OnInit, OnDestroy {
   public alerts: IAlert[] = [];

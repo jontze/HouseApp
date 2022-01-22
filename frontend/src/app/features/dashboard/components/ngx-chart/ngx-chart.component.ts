@@ -38,7 +38,14 @@ export class NgxChartComponent implements OnInit {
   ];
   colorScheme?: IChartColorSchema;
 
-  constructor() {}
+  ngOnInit() {
+    this.colorScheme = {
+      name: 'vivid',
+      selectable: true,
+      group: 'Ordinal',
+      domain: this.colorSeries,
+    };
+  }
 
   dateFormatting(val: number) {
     return new Date(val).toLocaleString('de-DE', {
@@ -58,13 +65,5 @@ export class NgxChartComponent implements OnInit {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-  ngOnInit() {
-    this.colorScheme = {
-      name: 'vivid',
-      selectable: true,
-      group: 'Ordinal',
-      domain: this.colorSeries,
-    };
   }
 }
