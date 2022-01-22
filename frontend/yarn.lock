@@ -1684,10 +1684,10 @@
     "@angular-devkit/schematics" "13.1.3"
     jsonc-parser "3.0.0"
 
-"@swimlane/ngx-charts@^18.0.1":
-  version "18.0.1"
-  resolved "https://registry.yarnpkg.com/@swimlane/ngx-charts/-/ngx-charts-18.0.1.tgz#84c9996d5a66590d911c8e218ffb2761880c22cf"
-  integrity sha512-yTSKIPyzcrR13wUnJf5K4cem+nrYhfKeywdipLM+7/qgJiLcs7HFRvcUhCTp3jQl2K+y8a6OWJAAmS8azcAshg==
+"@swimlane/ngx-charts@^20.0.1":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@swimlane/ngx-charts/-/ngx-charts-20.0.1.tgz#6bcbf31b1ba88a53bc5796ed23e7ddf65189a493"
+  integrity sha512-gceTOLm4vZHBvNPyNAFqQf96xM+NLy56nRGX1cGR0dBQJq/0PtexrbEttg3AiZy5DvyXNF6rNdeZynUMZUi61Q==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     d3-array "^2.9.1"
