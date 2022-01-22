@@ -8,8 +8,11 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faChartLine,
   faDatabase,
+  faEdit,
   faHouseUser,
+  faTable,
   faTachometerAlt,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -24,7 +27,10 @@ export class IconsModule {
       faChartLine,
       faHouseUser,
       faTachometerAlt,
-      faDatabase
+      faDatabase,
+      faTable,
+      faEdit,
+      faTrash
     );
   }
 }
