@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <div class="modal-title pull-left">
+    <h2>Eintrag bearbeiten</h2>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="container" [ngSwitch]="type">
+    <ng-container *ngSwitchCase="editWindow.Power">
+      <app-power-form
+        (submitPowerEvent)="updateEntry($event)"
+        [power$]="power$"
+      ></app-power-form>
+    </ng-container>
+    <ng-container *ngSwitchCase="editWindow.Water">
+      <app-water-form
+        (submitWaterEvent)="updateEntry($event)"
+        [water$]="water$"
+      ></app-water-form>
+    </ng-container>
+    <ng-container *ngSwitchCase="editWindow.Oil">
+      <app-oil-form
+        (submitOilEvent)="updateEntry($event)"
+        [oil$]="oil$"
+      ></app-oil-form>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <h1>Type is {{ type }}</h1>
+    </ng-container>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="close()">
+    Schließen
+  </button>
+</div>

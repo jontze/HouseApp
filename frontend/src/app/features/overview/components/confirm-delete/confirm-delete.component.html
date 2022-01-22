@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <div class="modal-title pull-left"><h2>Eintrag löschen</h2></div>
+</div>
+<div class="modal-body">
+  <div class="container g-2">
+    <div class="row g-2">
+      <p class="fw-bolder">Willst du den Eintrag wirklich löschen?</p>
+    </div>
+    <div class="row g-2">
+      <div class="col-sm-6">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="closeAndConfirm()"
+        >
+          JA!
+        </button>
+      </div>
+      <div class="col-sm-6">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="closeAndDecline()"
+        >
+          Nö!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="closeAndDecline()">
+    Schließen
+  </button>
+</div>

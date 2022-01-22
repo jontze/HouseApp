@@ -14,6 +14,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/creator/creator.module').then((m) => m.CreatorModule),
   },
+  {
+    path: 'uebersicht',
+    loadChildren: () =>
+      import('./features/overview/overview.module').then(
+        (m) => m.OverviewModule
+      ),
+  },
 ];
 
 @NgModule({

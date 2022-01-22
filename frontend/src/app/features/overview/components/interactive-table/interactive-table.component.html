@@ -1,0 +1,40 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-9">
+    <ngx-datatable
+      columnMode="force"
+      class="bootstrap"
+      [rows]="row$ | async"
+      rowHeight="auto"
+      trackByProp="id"
+      [sorts]="[{ prop: 'date', dir: 'asc' }]"
+    >
+      <ngx-datatable-column name="ID" prop="id"> </ngx-datatable-column>
+      <ngx-datatable-column name="Datum" prop="date">
+        <ng-template
+          let-row="row"
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          {{ row.date | date: "mediumDate":"GMT+2":"de" }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [name]="dataName" [prop]="dataPropName">
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Bearbeiten" prop="edit">
+        <ng-template
+          let-row="row"
+          let-value="value"
+          ngx-datatable-cell-template
+        >
+          <app-action
+            [type]="editWindowType"
+            [identifier]="row.id"
+            (deleteEntry)="deleteEntry($event)"
+            (changeEntry)="updateEntry($event)"
+          ></app-action>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
