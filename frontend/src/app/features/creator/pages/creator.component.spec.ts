@@ -7,9 +7,15 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { of, throwError } from 'rxjs';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { ApiBackendService } from 'src/app/core/services/api-backend.service';
-import { Oil, Power, Water } from 'src/app/core/services/classes/api-backend';
+import {
+  Oil,
+  OilInput,
+  Power,
+  PowerInput,
+  Water,
+  WaterInput,
+} from 'src/app/core/services/classes/api-backend';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { IFormResult } from '../models/form-result';
 import { CreatorComponent } from './creator.component';
 
 describe('CreatorComponent', () => {
@@ -18,7 +24,9 @@ describe('CreatorComponent', () => {
   let mockBackendService: jasmine.SpyObj<ApiBackendService>;
   let mockAlertService: jasmine.SpyObj<AlertService>;
 
-  let dummyFormResult: IFormResult;
+  let dummyWaterFormResult: WaterInput;
+  let dummyPowerFormResult: PowerInput;
+  let dummyOilFormResult: OilInput;
   let dummyPowerRes: Power;
   let dummyWaterRes: Water;
   let dummyOilRes: Oil;
@@ -54,9 +62,17 @@ describe('CreatorComponent', () => {
       ],
     }).compileComponents();
 
-    dummyFormResult = {
+    dummyWaterFormResult = {
       date: new Date().toISOString(),
-      value: 1.5,
+      cubicmeter: 1.5,
+    };
+    dummyOilFormResult = {
+      date: new Date().toISOString(),
+      filled: 1.5,
+    };
+    dummyPowerFormResult = {
+      date: new Date().toISOString(),
+      kwh: 1.5,
     };
     dummyPowerRes = {
       id: 1,
@@ -97,12 +113,11 @@ describe('CreatorComponent', () => {
   });
 
   it('should submit Water and return submited value on success', () => {
-    component.submitWater(dummyFormResult);
+    component.submitWater(dummyWaterFormResult);
 
-    expect(mockBackendService.postWater).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      cubicmeter: dummyFormResult.value,
-    });
+    expect(mockBackendService.postWater).toHaveBeenCalledWith(
+      dummyWaterFormResult
+    );
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       'Wasserstand <strong>erfolgreich</strong> übermittelt!',
       'success'
@@ -113,12 +128,11 @@ describe('CreatorComponent', () => {
   it('should call error alert when submit water failed', () => {
     mockBackendService.postWater.and.returnValue(throwError(new Error('Test')));
 
-    component.submitWater(dummyFormResult);
+    component.submitWater(dummyWaterFormResult);
 
-    expect(mockBackendService.postWater).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      cubicmeter: dummyFormResult.value,
-    });
+    expect(mockBackendService.postWater).toHaveBeenCalledWith(
+      dummyWaterFormResult
+    );
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       '<strong>Fehler!</strong> Wassterstand konnte <strong>nicht übermittel</strong> werden...',
       'danger'
@@ -126,12 +140,11 @@ describe('CreatorComponent', () => {
   });
 
   it('should submit Power and return submited value on success', () => {
-    component.submitPower(dummyFormResult);
+    component.submitPower(dummyPowerFormResult);
 
-    expect(mockBackendService.postPower).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      kwh: dummyFormResult.value,
-    });
+    expect(mockBackendService.postPower).toHaveBeenCalledWith(
+      dummyPowerFormResult
+    );
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       'Stromzählerstand <strong>erfolgreich</strong> übermittelt!',
       'success'
@@ -142,12 +155,11 @@ describe('CreatorComponent', () => {
   it('should call error alert when submit power failed', () => {
     mockBackendService.postPower.and.returnValue(throwError(new Error('Test')));
 
-    component.submitPower(dummyFormResult);
+    component.submitPower(dummyPowerFormResult);
 
-    expect(mockBackendService.postPower).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      kwh: dummyFormResult.value,
-    });
+    expect(mockBackendService.postPower).toHaveBeenCalledWith(
+      dummyPowerFormResult
+    );
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       '<strong>Fehler!</strong> Stromzählerstand konnte <strong>nicht übermittel</strong> werden...',
       'danger'
@@ -155,28 +167,22 @@ describe('CreatorComponent', () => {
   });
 
   it('should submit Oil and return submited value on success', () => {
-    component.submitOil(dummyFormResult);
+    component.submitOil(dummyOilFormResult);
 
     expect(component.postedOil).toEqual(dummyOilRes);
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       'Ölstand <strong>erfolgreich</strong> übermittelt!',
       'success'
     );
-    expect(mockBackendService.postOil).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      filled: dummyFormResult.value,
-    });
+    expect(mockBackendService.postOil).toHaveBeenCalledWith(dummyOilFormResult);
   });
 
   it('should call error alert when submit oil failed', () => {
     mockBackendService.postOil.and.returnValue(throwError(new Error('Test')));
 
-    component.submitOil(dummyFormResult);
+    component.submitOil(dummyOilFormResult);
 
-    expect(mockBackendService.postOil).toHaveBeenCalledWith({
-      date: dummyFormResult.date,
-      filled: dummyFormResult.value,
-    });
+    expect(mockBackendService.postOil).toHaveBeenCalledWith(dummyOilFormResult);
     expect(mockAlertService.addAlert).toHaveBeenCalledWith(
       '<strong>Fehler!</strong> Ölstand konnte <strong>nicht übermittel</strong> werden...',
       'danger'

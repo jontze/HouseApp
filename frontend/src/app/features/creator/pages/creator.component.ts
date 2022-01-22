@@ -1,11 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { deLocale } from 'ngx-bootstrap/locale';
-import { IFormResult } from '../models/form-result';
+import { Component, OnDestroy } from '@angular/core';
 import { ApiBackendService } from '../../../core/services/api-backend.service';
-import { Oil, Power, Water } from '../../../core/services/classes/api-backend';
+import {
+  Oil,
+  OilInput,
+  Power,
+  PowerInput,
+  Water,
+  WaterInput,
+} from '../../../core/services/classes/api-backend';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -13,39 +15,27 @@ import { AlertService } from 'src/app/core/services/alert.service';
 @Component({
   selector: 'app-creator',
   templateUrl: './creator.component.html',
-  styleUrls: ['./creator.component.css'],
 })
-export class CreatorComponent implements OnInit, OnDestroy {
+export class CreatorComponent implements OnDestroy {
   public postedOil?: Oil;
   public postedWater?: Water;
   public postedPower?: Power;
   private readonly ngUnsubscribe = new Subject();
 
   constructor(
-    private readonly fb: FormBuilder,
     private readonly apiBackendService: ApiBackendService,
-    private readonly bsLocalService: BsLocaleService,
     private readonly alertService: AlertService
-  ) {
-    defineLocale('de', deLocale);
-    this.bsLocalService.use('de');
-  }
-
-  ngOnInit(): void {}
+  ) {}
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
 
-  submitPower(powerForm: IFormResult): void {
+  submitPower(powerForm: PowerInput): void {
     this.apiBackendService
-      .postPower({
-        date: powerForm.date,
-        kwh: powerForm.value,
-      })
+      .postPower(powerForm)
       .pipe(takeUntil(this.ngUnsubscribe))
-
       .subscribe(
         (power) => {
           this.postedPower = power;
@@ -64,12 +54,9 @@ export class CreatorComponent implements OnInit, OnDestroy {
       );
   }
 
-  public submitWater(waterForm: IFormResult): void {
+  public submitWater(waterForm: WaterInput): void {
     this.apiBackendService
-      .postWater({
-        date: waterForm.date,
-        cubicmeter: waterForm.value,
-      })
+      .postWater(waterForm)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
@@ -89,12 +76,9 @@ export class CreatorComponent implements OnInit, OnDestroy {
       );
   }
 
-  public submitOil(oilForm: IFormResult): void {
+  public submitOil(oilForm: OilInput): void {
     this.apiBackendService
-      .postOil({
-        date: oilForm.date,
-        filled: oilForm.value,
-      })
+      .postOil(oilForm)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
