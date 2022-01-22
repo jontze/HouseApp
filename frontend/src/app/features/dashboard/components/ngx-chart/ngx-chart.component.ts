@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ChartDataI } from '../../models/line-charts';
-import { IChartColorSchema } from '../../models/ngx-color-schema';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
 import { Observable } from 'rxjs';
+import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 registerLocaleData(localeDe, localeDeExtra);
 
@@ -13,7 +13,7 @@ registerLocaleData(localeDe, localeDeExtra);
   templateUrl: './ngx-chart.component.html',
   styleUrls: ['./ngx-chart.component.css'],
 })
-export class NgxChartComponent implements OnInit {
+export class NgxChartComponent {
   @Input() data$?: Observable<ReadonlyArray<ChartDataI>>;
   @Input() xLabel: string = '';
   @Input() yLabel: string = '';
@@ -37,16 +37,12 @@ export class NgxChartComponent implements OnInit {
     '#ff5722',
     '#ff4514',
   ];
-  colorScheme?: IChartColorSchema;
-
-  ngOnInit() {
-    this.colorScheme = {
-      name: 'vivid',
-      selectable: true,
-      group: 'Ordinal',
-      domain: this.colorSeries,
-    };
-  }
+  public color: Color = {
+    name: 'vivid',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: this.colorSeries,
+  };
 
   dateFormatting(val: number) {
     return new Date(val).toLocaleString('de-DE', {
