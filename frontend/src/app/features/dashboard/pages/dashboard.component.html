@@ -6,7 +6,7 @@
           <app-ngx-chart
             xLabel="Datum"
             yLabel="Strom in (KWh)"
-            [data]="allPower"
+            [data$]="power$"
             [legend]="false"
             [colorSeries]="['#ffa500']"
             [timeline]="true"
@@ -16,7 +16,7 @@
     </div>
     <div class="col-xl-4">
       <app-card title="Vergleich Stromverbrauch">
-        <app-compare [data]="allPower" unit="KWh"></app-compare>
+        <app-compare [attr.data]="power$ | async" unit="KWh"></app-compare>
       </app-card>
     </div>
   </div>
@@ -27,7 +27,7 @@
           <app-ngx-chart
             xLabel="Datum"
             yLabel="Wasserverbrauch (m³)"
-            [data]="allWater"
+            [data$]="water$"
             [legend]="false"
             [colorSeries]="['#0000ff']"
             [timeline]="true"
@@ -37,7 +37,7 @@
     </div>
     <div class="col-xl-4">
       <app-card title="Vergleich Wasserverbrauch">
-        <app-compare [data]="allWater" unit="m³"></app-compare>
+        <app-compare [attr.data]="water$" unit="m³"></app-compare>
       </app-card>
     </div>
   </div>
@@ -48,7 +48,7 @@
           <app-ngx-chart
             xLabel="Datum"
             yLabel="Ölstand"
-            [data]="allOil"
+            [data$]="oil$"
             [legend]="false"
             [colorSeries]="['#000000']"
             [timeline]="true"
@@ -58,7 +58,7 @@
     </div>
     <div class="col-xl-4">
       <app-card title="Vergleich Ölstand">
-        <app-compare [data]="allOil" unit="gefüllt"></app-compare>
+        <app-compare [attr.data]="oil$" unit="gefüllt"></app-compare>
       </app-card>
     </div>
   </div>

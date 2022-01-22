@@ -4,6 +4,7 @@ import { IChartColorSchema } from '../../models/ngx-color-schema';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
+import { Observable } from 'rxjs';
 
 registerLocaleData(localeDe, localeDeExtra);
 
@@ -13,7 +14,7 @@ registerLocaleData(localeDe, localeDeExtra);
   styleUrls: ['./ngx-chart.component.css'],
 })
 export class NgxChartComponent implements OnInit {
-  @Input() data: ChartDataI[] = [];
+  @Input() data$?: Observable<ReadonlyArray<ChartDataI>>;
   @Input() xLabel: string = '';
   @Input() yLabel: string = '';
   @Input() showYLabel: boolean = true;

@@ -1,36 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ChartService } from 'src/app/core/services/chart.service';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ChartDataI } from '../models/line-charts';
+import { selectOilChartData } from 'src/app/store/oil/oil.selector';
+import { selectPowerChartData } from 'src/app/store/power/power.selector';
+import { selectWaterChartData } from 'src/app/store/water/water.selector';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
-  public allOil: ChartDataI[] = [];
-  public allPower: ChartDataI[] = [];
-  public allWater: ChartDataI[] = [];
+export class DashboardComponent {
+  public oil$: Observable<ReadonlyArray<ChartDataI>> =
+    this.store.select(selectOilChartData);
+  public power$: Observable<ReadonlyArray<ChartDataI>> =
+    this.store.select(selectPowerChartData);
+  public water$: Observable<ReadonlyArray<ChartDataI>> =
+    this.store.select(selectWaterChartData);
 
-  constructor(private readonly chartService: ChartService) {}
-
-  ngOnInit(): void {
-    this.subscriptions.push(
-      this.chartService
-        .getPowerChartData()
-        .subscribe((powerChart) => (this.allPower = powerChart)),
-      this.chartService
-        .getOilChartData()
-        .subscribe((oilChart) => (this.allOil = oilChart)),
-      this.chartService
-        .getWaterChartData()
-        .subscribe((waterChart) => (this.allWater = waterChart))
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((s) => s.unsubscribe());
-  }
+  constructor(private readonly store: Store) {}
 }
