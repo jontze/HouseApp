@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IResults } from './results';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
@@ -11,11 +11,7 @@ registerLocaleData(localeDe, localeDeExtra);
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css'],
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent {
   @Input() resultData?: IResults;
   @Input() type?: 'OIL' | 'WATER' | 'POWER';
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

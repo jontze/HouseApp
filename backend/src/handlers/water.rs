@@ -61,6 +61,39 @@ async fn drop_by_id(id: i32, pool: &State<PgPool>) -> Result<http::Status, statu
         .map(|_deleted| http::Status::Ok)
 }
 
+#[put("/<id>", data = "<update_water>")]
+async fn edit_by_id(
+    id: i32,
+    update_water: Json<Water>,
+    pool: &State<PgPool>,
+) -> Result<Json<Water>, status::Custom<&str>> {
+    sqlx::query_as!(
+        Water,
+        "UPDATE water SET date = $2, cubicmeter = $3 WHERE id = $1 RETURNING *",
+        id,
+        update_water.date,
+        update_water.cubicmeter
+    )
+    .fetch_one(pool.inner())
+    .await
+    .map_err(|err| {
+        if let sqlx::Error::RowNotFound = err {
+            status::Custom(http::Status::NotFound, "Not found!")
+        } else {
+            status::Custom(http::Status::InternalServerError, "Something went wrong!")
+        }
+    })
+    .map(Json)
+}
+
 pub fn register() -> Vec<Route> {
-    routes![all, get_by_id, create, drop_by_id]
+    routes![
+        all,
+        get_by_id,
+        create,
+        drop_by_id,
+        edit_by_id,
+        utils::manage_preflight,
+        utils::manage_preflight_with_id
+    ]
 }

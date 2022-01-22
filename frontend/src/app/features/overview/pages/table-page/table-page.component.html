@@ -1,0 +1,37 @@
+<div>
+  <tabset [justified]="true">
+    <tab heading="Strom">
+      <app-interactive-table
+        dataName="KWH"
+        dataPropName="kwh"
+        [row$]="power$"
+        [editWindowType]="editWindow.Power"
+        (onEntryDelete)="deletePower($event)"
+        (onEntryUpdate)="updatePower($event)"
+      >
+      </app-interactive-table>
+    </tab>
+    <tab heading="Wasser">
+      <app-interactive-table
+        dataName="Kubikmeter"
+        dataPropName="cubicmeter"
+        [row$]="water$"
+        [editWindowType]="editWindow.Water"
+        (onEntryDelete)="deleteWater($event)"
+        (onEntryUpdate)="updateWater($event)"
+      >
+      </app-interactive-table>
+    </tab>
+    <tab heading="Öl">
+      <app-interactive-table
+        dataName="Füllstand"
+        dataPropName="filled"
+        [row$]="oil$"
+        [editWindowType]="editWindow.Oil"
+        (onEntryDelete)="deleteOil($event)"
+        (onEntryUpdate)="updateOil($event)"
+      >
+      </app-interactive-table>
+    </tab>
+  </tabset>
+</div>

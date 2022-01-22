@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-compare',
   templateUrl: './compare.component.html',
   styleUrls: ['./compare.component.css'],
 })
-export class CompareComponent implements OnInit {
+export class CompareComponent {
   // TODO: implement calculating logic for historic data;
 
   @Input() public data!: any[];
@@ -19,8 +19,4 @@ export class CompareComponent implements OnInit {
   public isMissingYearAbs = true;
   public compareYearRel!: number;
   public isMissingYearRel = true;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,7 +1,22 @@
 use chrono::{DateTime, NaiveDateTime, ParseError};
+use rocket::http;
 
 pub fn parse_date_string(date_string: &str) -> Result<NaiveDateTime, ParseError> {
     Ok(DateTime::parse_from_rfc3339(date_string)?.naive_utc())
+}
+
+// TODO: Wait for a better solution to handle preflight requests with rocket
+// https://github.com/SergioBenitez/Rocket/issues/25
+#[options("/")]
+pub async fn manage_preflight() -> http::Status {
+    http::Status::Ok
+}
+
+// TODO: Wait for a better solution to handle preflight requests with rocket
+// https://github.com/SergioBenitez/Rocket/issues/25
+#[options("/<_id>")]
+pub async fn manage_preflight_with_id(_id: i32) -> http::Status {
+    http::Status::Ok
 }
 
 #[cfg(test)]

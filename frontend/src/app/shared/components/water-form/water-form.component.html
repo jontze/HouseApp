@@ -1,0 +1,8 @@
+<app-resource-form
+  header="Wasserverbrauch eintragen"
+  valueLabel="Wasserwerte in m³"
+  valuePlaceholder="Gebe Wasserwerte ein"
+  dateLabel="Ablesedatum"
+  (submitFormEvent)="submitWater($event)"
+  [data$]="waterFormData$"
+></app-resource-form>

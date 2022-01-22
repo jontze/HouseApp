@@ -4,7 +4,7 @@ import { IconsModule } from './icons/icons.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  imports: [],
   exports: [CommonModule, IconsModule],
 })
 export class SharedModule {}

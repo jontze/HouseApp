@@ -1,5 +1,6 @@
 use super::Settings;
 use rocket::fairing::{Fairing, Info, Kind};
+use rocket::http::Header;
 use rocket::request::Request;
 pub use rocket::shield::Shield;
 use rocket::shield::{Feature, Permission, Prefetch, Referrer};
@@ -19,7 +20,12 @@ impl Fairing for Cors {
     async fn on_response<'r>(&self, request: &'r Request<'_>, response: &mut Response<'r>) {
         let settings = request.rocket().state::<Settings>();
         if let Some(set) = settings {
-            response.set_raw_header("Access-Control-Allow-Origin", &set.web.cors);
+            response.set_header(Header::new("Access-Control-Allow-Origin", &set.web.cors));
+            response.set_header(Header::new(
+                "Access-Control-Allow-Methods",
+                "GET, POST, DELETE, PUT, OPTIONS",
+            ));
+            response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
         }
     }
 }

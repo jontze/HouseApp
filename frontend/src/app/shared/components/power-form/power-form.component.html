@@ -1,0 +1,8 @@
+<app-resource-form
+  header="Stromzähler eintragen"
+  valueLabel="Stromwerte in KWh"
+  valuePlaceholder="Gebe Stromwert ein"
+  dateLabel="Ablesedatum"
+  (submitFormEvent)="submitPower($event)"
+  [data$]="powerFormData$"
+></app-resource-form>

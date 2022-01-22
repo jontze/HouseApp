@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap/alert';
-
 import { DashboardComponent } from './pages/dashboard.component';
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';

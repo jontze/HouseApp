@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker/';
-
 import { SharedModule } from '../../shared/shared.module';
 import { CreatorRoutingModule } from './creator-routing.module';
 import { CreatorComponent } from './pages/creator.component';
-import { AlertModule } from 'ngx-bootstrap/alert';
 import { ResultsComponent } from './components/results/results.component';
-import { FormComponent } from './components/form/form.component';
+import { OilFormModule } from 'src/app/shared/components/oil-form/oil-form.module';
+import { WaterFormModule } from 'src/app/shared/components/water-form/water-form.module';
+import { PowerFormModule } from 'src/app/shared/components/power-form/power-form.module';
 
 @NgModule({
-  declarations: [CreatorComponent, ResultsComponent, FormComponent],
+  declarations: [CreatorComponent, ResultsComponent],
   imports: [
     SharedModule,
     CreatorRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    AlertModule.forRoot(),
     TabsModule.forRoot(),
-    ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot(),
+    OilFormModule,
+    WaterFormModule,
+    PowerFormModule,
   ],
   providers: [CreatorComponent],
 })

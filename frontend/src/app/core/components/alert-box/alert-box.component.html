@@ -1,0 +1,3 @@
+<div *ngFor="let alert of alerts; trackBy: identifyById">
+  <alert [type]="alert.type"><span [innerHTML]="alert.message"></span></alert>
+</div>

@@ -9,7 +9,7 @@
     [xAxisLabel]="xLabel"
     [yAxisLabel]="yLabel"
     [timeline]="timeline"
-    [results]="data"
+    [results]="data$ | async"
     [xAxisTickFormatting]="this.dateFormatting"
     (select)="onSelect($event)"
     (activate)="onActivate($event)"

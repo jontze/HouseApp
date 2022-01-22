@@ -1,42 +1,24 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { CoreModule } from 'src/app/core/core.module';
-import { ChartService } from 'src/app/core/services/chart.service';
-import { ChartDataI } from '../models/line-charts';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
-  let mockChartService: jasmine.SpyObj<ChartService>;
-
-  let dummyPowerChartRes: ChartDataI[] = [];
-  let dummyOilChartRes: ChartDataI[] = [];
-  let dummyWaterChartRes: ChartDataI[] = [];
+  let mockStoreService: jasmine.SpyObj<Store>;
 
   beforeEach(async () => {
-    mockChartService = jasmine.createSpyObj('ChartService', [
-      'getPowerChartData',
-      'getOilChartData',
-      'getWaterChartData',
-    ]);
-
+    mockStoreService = jasmine.createSpyObj('Store', ['select']);
     await TestBed.configureTestingModule({
-      imports: [CoreModule],
       providers: [
         {
-          provide: ChartService,
-          useValue: mockChartService,
+          provide: Store,
+          useValue: mockStoreService,
         },
       ],
       declarations: [DashboardComponent],
     }).compileComponents();
-
-    // init mocks
-    mockChartService.getOilChartData.and.returnValue(of(dummyOilChartRes));
-    mockChartService.getPowerChartData.and.returnValue(of(dummyPowerChartRes));
-    mockChartService.getWaterChartData.and.returnValue(of(dummyWaterChartRes));
   });
 
   beforeEach(() => {
@@ -49,18 +31,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(
-    'should init component and load chart data',
-    waitForAsync(() => {
-      fixture.whenStable().then(() => {
-        expect(mockChartService.getOilChartData).toHaveBeenCalled();
-        expect(mockChartService.getPowerChartData).toHaveBeenCalled();
-        expect(mockChartService.getWaterChartData).toHaveBeenCalled();
-
-        expect(component.allOil).toEqual(dummyOilChartRes);
-        expect(component.allPower).toEqual(dummyPowerChartRes);
-        expect(component.allWater).toEqual(dummyWaterChartRes);
-      });
-    })
-  );
+  it('should call store on init', () => {
+    expect(mockStoreService.select).toHaveBeenCalledTimes(3);
+  });
 });

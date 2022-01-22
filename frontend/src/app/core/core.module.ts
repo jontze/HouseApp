@@ -7,17 +7,25 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { AlertBoxComponent } from './components/alert-box/alert-box.component';
 
 const components: any[] = [NavigationBarComponent, SkeletonComponent];
 
 @NgModule({
-  declarations: [NavigationBarComponent, FooterComponent, SkeletonComponent],
+  declarations: [
+    NavigationBarComponent,
+    FooterComponent,
+    SkeletonComponent,
+    AlertBoxComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
     HttpClientModule,
     SharedModule,
+    AlertModule.forRoot(),
   ],
   exports: [SkeletonComponent],
 })

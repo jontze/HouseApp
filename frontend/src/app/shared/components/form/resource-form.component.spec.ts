@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
-import { FormComponent } from './form.component';
+import { ResourceFormComponent } from './resource-form.component';
 
-describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+describe('ResourceFormComponent', () => {
+  let component: ResourceFormComponent;
+  let fixture: ComponentFixture<ResourceFormComponent>;
 
   let dummyDate = '12.12.12';
   let dummyValue = 123.45;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormComponent],
+      declarations: [ResourceFormComponent],
       providers: [FormBuilder, BsLocaleService],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormComponent);
+    fixture = TestBed.createComponent(ResourceFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

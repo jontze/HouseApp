@@ -31,9 +31,9 @@ async fn main() {
         .attach(AdHoc::config::<Settings>())
         .attach(Cors)
         .attach(Shield::secure())
-        .mount("/oil/", register_oil())
-        .mount("/power/", register_power())
-        .mount("/water/", register_water())
+        .mount("/api/oil/", register_oil())
+        .mount("/api/power/", register_power())
+        .mount("/api/water/", register_water())
         .launch()
         .await
         .expect("Server should start");

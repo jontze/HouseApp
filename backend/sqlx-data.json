@@ -1,5 +1,51 @@
 {
   "db": "PostgreSQL",
+  "11bfde9783a5c2d7d8a86acfaccad7bb6cff9604d0cc87fbb6e88feb477be06a": {
+    "query": "UPDATE power SET date = $2, kwh = $3 WHERE id = $1 RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "kwh",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Timestamp",
+          "Float4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
   "11cc13e71031de00b69b9bb0122c5820a89292f92a1b8d3c82ebc15cd96aad6e": {
     "query": "INSERT INTO water (date, cubicmeter) VALUES ($1, $2) RETURNING *",
     "describe": {
@@ -153,6 +199,52 @@
       "nullable": []
     }
   },
+  "91e47db8a792bacdfd0eec863ccc18ea42f5c7f4c6d0f42c789ad01c9b904cc7": {
+    "query": "UPDATE water SET date = $2, cubicmeter = $3 WHERE id = $1 RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "cubicmeter",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Timestamp",
+          "Float4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
   "a7e7b9adebe5f4c00c62f9293be203ff92cd69becace797549eb53f0c192c5ed": {
     "query": "DELETE FROM power WHERE id = $1",
     "describe": {
@@ -198,6 +290,52 @@
       "parameters": {
         "Left": [
           "Int4"
+        ]
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "c32642d60377c0f5a4b9341b86d73a3b81d4e5c3bc6208f5b0114fe6c08c1441": {
+    "query": "UPDATE oil SET date = $2, filled = $3 WHERE id = $1 RETURNING *",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 1,
+          "name": "date",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 2,
+          "name": "filled",
+          "type_info": "Float4"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        },
+        {
+          "ordinal": 4,
+          "name": "updatedAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": [
+          "Int4",
+          "Timestamp",
+          "Float4"
         ]
       },
       "nullable": [
