@@ -1,34 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { retrievedOilList } from 'src/app/store/oil/oil.action';
-import { retrievedPowerList } from 'src/app/store/power/power.action';
-import { retrievedWaterList } from 'src/app/store/water/water.action';
-import { ApiBackendService } from '../services/api-backend.service';
+import { Observable, of } from 'rxjs';
+import { fetchOilList } from 'src/app/store/oil/oil.action';
+import { fetchPowerList } from 'src/app/store/power/power.action';
+import { fetchWaterList } from 'src/app/store/water/water.action';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResourceResolver implements Resolve<boolean> {
-  constructor(
-    private readonly apiService: ApiBackendService,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly store: Store) {}
 
   resolve(): Observable<boolean> {
-    return forkJoin([
-      this.apiService.fetchOil(),
-      this.apiService.fetchPower(),
-      this.apiService.fetchWater(),
-    ]).pipe(
-      map(([oil, power, water]) => {
-        this.store.dispatch(retrievedOilList({ oil }));
-        this.store.dispatch(retrievedWaterList({ water }));
-        this.store.dispatch(retrievedPowerList({ power }));
-        return true;
-      })
-    );
+    this.store.dispatch(fetchOilList());
+    this.store.dispatch(fetchWaterList());
+    this.store.dispatch(fetchPowerList());
+    return of(true);
   }
 }
