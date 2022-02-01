@@ -64,14 +64,16 @@ async fn drop_by_id(id: i32, pool: &State<PgPool>) -> Result<http::Status, statu
 #[put("/<id>", data = "<update_water>")]
 async fn edit_by_id(
     id: i32,
-    update_water: Json<Water>,
+    update_water: Json<InsertWater>,
     pool: &State<PgPool>,
 ) -> Result<Json<Water>, status::Custom<&str>> {
+    let parse_date_from_iso_string =
+        utils::parse_date_string(&update_water.date).expect("Date to be parsed");
     sqlx::query_as!(
         Water,
         "UPDATE water SET date = $2, cubicmeter = $3 WHERE id = $1 RETURNING *",
         id,
-        update_water.date,
+        parse_date_from_iso_string,
         update_water.cubicmeter
     )
     .fetch_one(pool.inner())
