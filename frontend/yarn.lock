@@ -1528,10 +1528,10 @@
     "@angular-devkit/schematics" "13.2.5"
     jsonc-parser "3.0.0"
 
-"@swimlane/ngx-charts@^20.0.1":
-  version "20.0.1"
-  resolved "https://registry.yarnpkg.com/@swimlane/ngx-charts/-/ngx-charts-20.0.1.tgz#6bcbf31b1ba88a53bc5796ed23e7ddf65189a493"
-  integrity sha512-gceTOLm4vZHBvNPyNAFqQf96xM+NLy56nRGX1cGR0dBQJq/0PtexrbEttg3AiZy5DvyXNF6rNdeZynUMZUi61Q==
+"@swimlane/ngx-charts@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@swimlane/ngx-charts/-/ngx-charts-20.1.0.tgz#c1377adacc835fa35ed0c6cb32a8ec5b43ccfd69"
+  integrity sha512-PY/X+eW+ZEvF3N1kuUVV5H3NHoFXlIWOvNnCKAs874yye//ttgfL/Qf9haHQpki5WIHQtpwn8xM1ylVEQT98bg==
   dependencies:
     "@types/d3-shape" "^2.0.0"
     d3-array "^2.9.1"
@@ -3337,10 +3337,10 @@ date-format@^4.0.3:
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-4.0.3.tgz#f63de5dc08dc02efd8ef32bf2a6918e486f35873"
   integrity sha512-7P3FyqDcfeznLZp2b+OMitV9Sz2lUnsT87WaTat9nVwqsBkTzPG3lPLNwW3en6F4pHUiWzr6vb8CLhjdK9bcxQ==
 
-dayjs@^1.10.7:
-  version "1.10.7"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
-  integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
+dayjs@^1.10.8:
+  version "1.10.8"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.8.tgz#267df4bc6276fcb33c04a6735287e3f429abec41"
+  integrity sha512-wbNwDfBHHur9UOzNUjeKUOJ0fCb0a52Wx0xInmQ7Y8FstyajiV1NmK1e00cxsr9YrE9r7yAChE0VvpuY5Rnlow==
 
 debug@2.6.9:
   version "2.6.9"
